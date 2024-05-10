@@ -1,0 +1,63 @@
+.dashBoardSideBarDiv_sideBar {
+  position: sticky;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  top: 0;
+  border-right: solid 1px #30343b;
+  padding-right: 2em;
+}
+.dashBoardSideBarDiv_sideBar_div__active {
+  display: flex;
+  align-items: center;
+  background: #7200ff1a;
+  padding: 12px 12px;
+  width: 200px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px #000000;
+  cursor: pointer;
+  color: #a053ff;
+  text-decoration: none;
+  border: solid 1px;
+}
+.dashBoardSideBarDiv_sideBar_div {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px;
+  width: 180px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #897f96;
+  text-decoration: none;
+}
+/* .dashBoardSideBarDiv_sideBar_div__active:hover {
+  color: var(--default_green_color);
+} */
+.dashBoardSideBarDiv_sideBar_div:hover {
+  color: #fff;
+}
+.dashBoardSideBarDiv_sideBar_div_icon {
+  font-size: 25px !important;
+  fill: black;
+}
+.dashBoardSideBarDiv_sideBar_div_txt {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.dashBoardSideBarDiv_sideBar_div_last {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px;
+}
+
+.dashBoardSideBarDiv_sideBar_div_last_icon {
+  color: #ff4444 !important;
+}
+.dashBoardSideBarDiv_sideBar_div_last_txt {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 10px;
+  color: #ff4444;
+}

@@ -1,0 +1,24 @@
+.transactionPage_title {
+  font-size: 40px;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  background: #f6f6f6;
+  padding: 0.5em 0.5em;
+  border-radius: 10px;
+}
+.transactionBodyTransactions {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 0em;
+  height: 100%;
+  overflow: scroll;
+  padding-bottom: 9em;
+}
+.defaultPage_body_area2_Transactions {
+  display: flex;
+  flex-direction: column;
+}
+.transactionBodyTransactions::-webkit-scrollbar {
+  display: none;
+}
