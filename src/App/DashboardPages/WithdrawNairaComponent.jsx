@@ -7,10 +7,12 @@ import {
   SEND_CRYPTO_FUNDS,
   SEND_FUNDS_INTERNAL,
   VERIFY_BANK,
+  PAYOUT_TO_BANK,
 } from "../../Services/TransactionServices";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
 const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
+  const symbol = "NGNC";
   const [loading, setLoading] = useState(false);
   const [pin, setPin] = useState("");
   const [pinModal, setPinModal] = useState(false);
@@ -24,11 +26,17 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
     bank_name: "",
     account_name: "--", //remove in production
   });
-  const [isNameResolved, setIsNameResolved] = useState(false);
 
+  useEffect(() => {
+    if (bankInfo.account_number.length === 10) {
+      verify_account_number();
+    }
+  }, [bankInfo.account_number]);
+
+  const [isNameResolved, setIsNameResolved] = useState(false);
   const [payload, setPayload] = useState({
     pin_code: "",
-    symbol: "NGNC",
+    symbol,
     amount: "",
     bank_info: {},
   });
@@ -46,11 +54,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
 
   const handleBankOnChange = (e) => {
     const { value } = e.target;
-    console.log(value);
-    //// console.logog(JSON.parse(value));
-    // let temp = JSON.parse(value);
-
-    // if (Object.keys(value).length === 0) return;
+    console.log(value, "chibuzor");
 
     setBankInfo({
       ...bankInfo,
@@ -59,42 +63,50 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
   };
   const verify_account_number = async (number) => {
     console.log("gfggfgf", number, bankInfo);
-    // const response = await VERIFY_BANK({
-    //   number: number,
-    //   bankCode: bankInfo.bank_code,
-    // });
-    // console.log("====================================");
-    // console.log(response);
-    // console.log("====================================");
-    // if (!response.success) {
-    //   setIsNameResolved(false);
-    //   return;
-    // }
-
-    // setBaneficiary(response.data.responseBody.accountName);
-    // setIsNameResolved(true);
-  };
-  const handleAccountNumberOnChange = async (e) => {
-    const { value, id } = e.target;
-    setBankInfo({
-      ...bankInfo,
-      account_number: value,
+    const response = await VERIFY_BANK({
+      account_number: bankInfo.account_number,
+      bank_code: bankInfo.bank_code,
     });
-    if (value.length === 10) {
-      verify_account_number(value);
+
+    console.log("====================================");
+    console.log(response);
+    console.log("====================================");
+    if (!response.success) {
+      setIsNameResolved(false);
       return;
     }
-    console.log(value);
+
+    setIsNameResolved(true);
+    setBankInfo({
+      ...bankInfo,
+      account_name: response.data.account_name,
+      bank_name: response.data.bank_name,
+    });
+  };
+
+  const handleAccountNumberOnChange = async (e) => {
+    const { value, id } = e.target;
     if (value.length > 10) return;
 
-    // setBankInfo({ ...bankInfo, account_number: value });
+    if (value.length < 10) {
+      setIsNameResolved(false);
+      setBankInfo({
+        ...bankInfo,
+        account_name: "",
+        account_number: value,
+      });
+      return;
+    }
 
-    // verify_account_number(value);
     console.log("====================================");
     console.log(value);
     console.log("====================================");
     //// console.logog(bankInfo);
 
+    setBankInfo({
+      ...bankInfo,
+      account_number: value,
+    });
     return;
   };
   useEffect(() => {
@@ -103,14 +115,13 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
 
   const handlePayout = async () => {
     setLoading(true);
-    setBankInfo({ ...bankInfo, account_name: beneficiary });
-    // const pin = prompt("Please enter your Pin");
-    let data = payload;
 
-    data = {
-      ...data,
-      bank_info: { ...bankInfo, account_name: beneficiary },
-      pin_code: pin,
+    console.log(bankInfo);
+
+    let data = {
+      amount: payload.amount,
+      symbol,
+      bank_info: bankInfo,
     };
 
     const response = await PAYOUT_TO_BANK(data);
@@ -121,6 +132,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
       //   toast.error(response?.data?.errorMessage);
       console.log("====================================");
       console.log(response);
+      alert(response?.data?.errorMessage || "An error occurred!!");
       console.log("====================================");
       return;
     }
@@ -135,9 +147,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
   const AddMax = () => {
     setPayload({ amount: balance });
   };
-  console.log("====================================");
-  console.log(bankList);
-  console.log("====================================");
+
   return (
     <div className="depositMoneyDiv">
       <div className="depositMoneyDiv_cont">
@@ -169,7 +179,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
                   Nigerian Naira
                 </div>
                 <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                  NGN
+                  {symbol}
                 </div>
               </div>
             </div>
@@ -190,7 +200,6 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
 
                 {bankList.length >= 1 ? (
                   bankList.map((bank, index) => {
-                    console.log(bank, JSON.stringify(bank), "alllaalalall");
                     return (
                       <option key={index} value={bank?.code}>
                         {bank.name}
@@ -221,6 +230,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
                   Account Name:
                 </div>
                 <div className="depositMoneyDiv_cont_body_input_div_div">
+                  <p> {bankInfo.account_name}</p>
                   {/* <div className="depositMoneyDiv_cont_body_input_div_div_cont1">
                   <img
                     src="/img/bsc_icon.png"

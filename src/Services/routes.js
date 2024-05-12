@@ -9,3 +9,4 @@ export const SEND_FUNDS_CRYPTO_ROUTE = `/api/withdrawal/external`;
 export const SEND_FUNDS_INTERNAL_ROUTE = `/api/withdrawal/internal`;
 export const LIST_BANKS_ROUTE = `/api/withdrawal/list-banks`;
 export const VERIFY_BANK_ROUTE = `/api/withdrawal/verify/account`;
+export const PROCESS_FIAT_CASHOUT_ROUTE = `/api/withdrawal/cashout`;

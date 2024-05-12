@@ -7,6 +7,7 @@ import {
   SEND_FUNDS_INTERNAL_ROUTE,
   LIST_BANKS_ROUTE,
   VERIFY_BANK_ROUTE,
+  PROCESS_FIAT_CASHOUT_ROUTE,
 } from "./routes";
 
 export const LIST_BANKS = async () => {
@@ -57,10 +58,24 @@ export const SEND_FUNDS_INTERNAL = async (payload) => {
     return error.response || error.message;
   }
 };
-export const VERIFY_BANK = async (payload) => {
+export const VERIFY_BANK = async ({ bank_code, account_number }) => {
   try {
-    const res = await server.post(VERIFY_BANK_ROUTE, payload);
+    const res = await server.post(
+      `${VERIFY_BANK_ROUTE}/${account_number}/${bank_code}`
+    );
     console.log("dhdhdh");
+    return res.data;
+  } catch (error) {
+    return error.response || error.message;
+  }
+};
+export const PAYOUT_TO_BANK = async ({ bank_info, amount, symbol }) => {
+  try {
+    const res = await server.post(`${PROCESS_FIAT_CASHOUT_ROUTE}`, {
+      amount,
+      symbol,
+      bank_info,
+    });
     return res.data;
   } catch (error) {
     return error.response || error.message;
