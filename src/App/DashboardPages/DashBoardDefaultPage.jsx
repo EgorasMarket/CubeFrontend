@@ -6,13 +6,67 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import CircleIcon from "@mui/icons-material/Circle";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import getUserInfo from "../../helper/userhelper";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { TRANSACTIONS, USER_BALANCE } from "../../Services/TransactionServices";
 
 const DashBoardDefaultPage = () => {
   const [balance, setBalance] = useState(0);
   const [transaction, setTransaction] = useState([]);
   const [tranPopUp, setTranPopUp] = useState(0);
+  const [userBal, setUserBal] = useState(0);
 
   // this gives an object with dates as keys
+  const { data: getTransaction } = useQuery({
+    queryKey: "transaction",
+    queryFn: async () => {
+      const res = await TRANSACTIONS();
+      console.log("====================================");
+      console.log(res);
+      if (res.code === 200) {
+        setTransaction(res.data);
+        return;
+      }
+
+      return res;
+    },
+  });
+
+  const { data: userBalance } = useQuery({
+    queryKey: "userBalance",
+    queryFn: async () => {
+      const res = await USER_BALANCE();
+      console.log("====================================");
+      console.log(res);
+      for (let i = 0; i < res.data.length; i++) {
+        switch (res.data[i].name) {
+          case "Naira-coin":
+            setUserBal(res.data[i]?.value === null ? "0" : res.data[i]?.value);
+            // setEgaxBalanceUsd(
+            //   data[i]?.usd_bal === null ? "0" : data[i]?.usd_bal
+            // );
+            break;
+        }
+      }
+      // if (res.code === 200) {
+      //   setTransaction(res.data);
+      //   return;
+      // }
+
+      return res;
+    },
+  });
+  const transactionFunc = async () => {
+    await getTransaction();
+  };
+  const userBalFunc = async () => {
+    await userBalance();
+  };
+  useEffect(() => {
+    transactionFunc();
+    userBalFunc();
+  }, []);
+
   const groups = transaction.reduce((groups, data) => {
     const date = data.createdAt.split("T")[0];
     if (!groups[date]) {
@@ -40,10 +94,16 @@ const DashBoardDefaultPage = () => {
     setTranPopUp(0);
     console.log("i am not here");
   };
+
+  useEffect(() => {
+    console.log(getUserInfo());
+  }, []);
   return (
     <div className="defaultPage">
       <div className="defaultPage_title">Home</div>
-      <div className="defaultPage_sub_title">Welcome back, Cyntax.</div>
+      <div className="defaultPage_sub_title">
+        Welcome back, {getUserInfo()?.username}.
+      </div>
       <div className="defaultPage_body">
         <div className="defaultPage_body_area1">
           <div className="defaultPage_body1">
@@ -51,7 +111,7 @@ const DashBoardDefaultPage = () => {
 
             <div className="defaultPage_body1_cont1">
               <span className="defaultPage_body1_cont1_span"> ₦</span>
-              {parseInt(1000).toFixed(2)}
+              {parseInt(userBal).toFixed(2)}
             </div>
           </div>
           <button className="defaultPage_body2">
@@ -105,13 +165,13 @@ const DashBoardDefaultPage = () => {
                     <div className="transactionBody_cont1_areabody2">
                       <div className="transactionBody_cont1_areabody2_amount">
                         {data.to_email === "samuelify225@gmail.com" ? (
-                          <div style={{ color: "green" }}>
+                          <div style={{ color: "#90ff90" }}>
                             {" "}
                             +₦
                             {parseInt(data.amount).toFixed(2)}
                           </div>
                         ) : (
-                          <div style={{ color: "red" }}>
+                          <div style={{ color: "#ff8686" }}>
                             {" "}
                             -₦
                             {parseInt(data.amount).toFixed(2)}
@@ -169,13 +229,13 @@ const DashBoardDefaultPage = () => {
                       <span className="transPopData">
                         {" "}
                         {data.to_email === "samuelify225@gmail.com" ? (
-                          <div style={{ color: "green" }}>
+                          <div style={{ color: "#0ecb81" }}>
                             {" "}
                             +₦
                             {parseInt(data.amount).toFixed(2)}
                           </div>
                         ) : (
-                          <div style={{ color: "red" }}>
+                          <div style={{ color: "#ff8484" }}>
                             {" "}
                             -₦
                             {parseInt(data.amount).toFixed(2)}

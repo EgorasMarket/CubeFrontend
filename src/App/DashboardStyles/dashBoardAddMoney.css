@@ -299,11 +299,14 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%;
+  width: -webkit-fill-available;
   margin-top: 1em;
   border: solid 1px #e6e6e6;
   padding: 10px;
   border-radius: 10px;
+}
+.receiveMoneyModalDiv_area1_cont1_t {
+  margin-top: 1em;
 }
 .receiveMoneyModalDiv_area1_cont2_heading {
   font-size: 12px;

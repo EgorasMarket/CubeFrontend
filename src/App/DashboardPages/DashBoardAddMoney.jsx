@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import "../DashboardStyles/dashBoardAddMoney.css";
 import Lottie from "lottie-react";
 import cardIcon from "../../lottieIcons/cardIcon.json";
+import { QRCode } from "react-qrcode-logo";
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+
 import bankIcon from "../../lottieIcons/bankIcon.json";
 import blockChainIcon from "../../lottieIcons/blockchainIcon.json";
 import fortUsers from "../../lottieIcons/transferAppUsersIcon.json";
@@ -12,6 +16,7 @@ import NumberFormat from "react-number-format";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import "../DashboardStyles/dashboarddefaultpage.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import getUserInfo from "../../helper/userhelper";
 const DashBoardAddMoney = () => {
   const [openCardModal, setOpenCardModal] = useState(false);
   const [openWalletModal, setOpenWalletModal] = useState(false);
@@ -66,7 +71,7 @@ const DashBoardAddMoney = () => {
       </div>
       <div className="dashBoardAddMoneyDiv_body">
         <div className="dashBoardAddMoneyDiv_body_area">
-          <div
+          {/* <div
             className="dashBoardAddMoneyDiv_body_area1"
             onClick={ToggleOpenCardModal}
           >
@@ -85,7 +90,7 @@ const DashBoardAddMoney = () => {
               </div>
             </div>
             <KeyboardArrowRightIcon className="dashBoardAddMoneyDiv_body_area1_cont2_icon" />
-          </div>
+          </div> */}
           <div
             className="dashBoardAddMoneyDiv_body_area1"
             onClick={ToggleBankTransferModal}
@@ -314,50 +319,134 @@ const DashBoardAddMoney = () => {
             <div className="backDiv" onClick={ToggleOpenWalletModal}>
               <KeyboardArrowLeftIcon /> Back
             </div>
-            <div className="receiveMoneyModalDiv_area1">
-              <div className="receiveMoneyModalDiv_area1_cont1">
-                <img
-                  src={
-                    "https://chart.googleapis.com/chart?cht=qr&chs=120x120&chl=" +
-                    walletAddress
-                  }
-                  alt=""
-                  className="receiveMoneyModalDiv_area1_cont1_img"
-                />
-                <div className="receiveMoneyModalDiv_area1_cont1_t">
-                  Scan Qrcode or copy the wallet address below to receive money.
+
+            {/* ============ */}
+            {/* ============ */}
+            {/* ============ */}
+            {/* ============ */}
+            <div className="depositMoneyDiv_cont_1">
+              <div className="depositMoneyDiv_cont_title_cont">
+                <div className="depositMoneyDiv_cont_title_cont_title">
+                  Deposit NGNC
+                </div>
+                <div className="depositMoneyDiv_cont_title_cont_para">
+                  Add funds directly from a blockchain account
                 </div>
               </div>
-              <div className="receiveMoneyModalDiv_area1_cont2_address">
-                <div className="receiveMoneyModalDiv_area1_cont2_heading">
-                  Wallet Address
+              <div className="depositMoneyDiv_cont_body">
+                <div className="depositMoneyDiv_cont_body_input_div">
+                  <div className="depositMoneyDiv_cont_body_input_div_title">
+                    Coin:
+                  </div>
+                  <div className="depositMoneyDiv_cont_body_input_div_div">
+                    <div className="depositMoneyDiv_cont_body_input_div_div_cont1">
+                      <img
+                        src="/img/tether_icon.png"
+                        alt=""
+                        className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
+                      />
+                      Digital Naira
+                    </div>
+                    <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
+                      NGNC
+                    </div>
+                  </div>
                 </div>
-                <div className="copy_qr_code_txt_div">
-                  <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <span className="walletAddress_txt">{walletAddress}</span>
-                    <FileCopyIcon
-                      className="file_icon_copy"
+                <div className="depositMoneyDiv_cont_body_input_div2">
+                  <div className="depositMoneyDiv_cont_body_input_div_title">
+                    Network:
+                  </div>
+                  <div className="depositMoneyDiv_cont_body_input_div_div">
+                    <div className="depositMoneyDiv_cont_body_input_div_div_cont1">
+                      <img
+                        src="/img/bsc_icon.png"
+                        alt=""
+                        className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
+                      />
+                      EGOChain
+                    </div>
+                    <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
+                      EGO20
+                    </div>
+                  </div>
+                </div>
+                <div className="depositMoneyDiv_cont_body_qr_div">
+                  <QRCode
+                    value={"0xfsy6e"}
+                    quietZone={5}
+                    eyeColor="#fff"
+                    bgColor="#161619"
+                    fgColor="#fff"
+                    logoImage="/img/tether_icon.png"
+                    eyeRadius={[
+                      [5, 5, 0, 5],
+                      [5, 5, 5, 0],
+                      [5, 0, 5, 5],
+                    ]}
+                    removeQrCodeBehindLogo={true}
+                    // logoPadding={5}
+                    // logoWidth={15}
+                    logoPaddingStyle="circle"
+                    className="depositMoneyDiv_cont_body_qr_div_qr"
+                  />
+                  <div className="depositMoneyDiv_cont_body_qr_div_txt">
+                    Scan Qrcode or copy wallet address to make payment
+                  </div>
+                </div>
+                <div className="depositMoneyDiv_cont_body_wallet_addr_div">
+                  <div className="depositMoneyDiv_cont_body_wallet_addr_div_title">
+                    WalletAddress:
+                  </div>
+
+                  <div className="depositMoneyDiv_cont_body_wallet_addr_div_input_div">
+                    <input
+                      type="text"
+                      value={"iuou87"}
+                      className="depositMoneyDiv_cont_body_wallet_addr_div_input"
+                      id="myInput"
+                    />
+                    <button
+                      className="depositMoneyDiv_cont_body_wallet_addr_div_btn"
                       onClick={() => copyWalletAddress(walletAddress)}
                       // onMouseOut={outFunc}
-                    />
+                    >
+                      Copy
+                      <ContentCopyOutlinedIcon className="depositMoneyDiv_cont_body_wallet_addr_div_btn_icon" />
+                      {copiedTxt == true ? (
+                        <div className="copiedToClipBoardDiv" onChange={timer}>
+                          Wallet address copied to clipboard
+                        </div>
+                      ) : null}
+                    </button>
+                  </div>
+                </div>
 
-                    {copiedTxt == true ? (
-                      <div className="copiedToClipBoardDiv" onChange={timer}>
-                        Wallet address copied to clipboard
-                      </div>
-                    ) : null}
-                  </span>
+                <div className="depositMoneyDiv_cont_body_tips_div">
+                  <div className="depositMoneyDiv_cont_body_tips_div_1">
+                    <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
+                    <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
+                      Send only NGNC to this deposit address
+                    </div>
+                  </div>
+                  <div className="depositMoneyDiv_cont_body_tips_div_1">
+                    <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
+                    <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
+                      Ensure the network is EGOChain (EGO20)
+                    </div>
+                  </div>
+                  <div className="depositMoneyDiv_cont_body_tips_div_1">
+                    <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
+                    <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
+                      Do not send Nfts to this address
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            {/* ============ */}
+            {/* ============ */}
+            {/* ============ */}
+            {/* ============ */}
             <div className="receiveMoneyModalDiv_area2_wallet_txt">
               {walletAddressInfo}
             </div>
@@ -372,22 +461,43 @@ const DashBoardAddMoney = () => {
             </div>
             <div className="receiveMoneyModalDiv_area1">
               <div className="receiveMoneyModalDiv_area1_cont1">
-                <img
+                {/* <img
                   src={
                     "https://chart.googleapis.com/chart?cht=qr&chs=120x120&chl=" +
-                    cyntax
+                    getUserInfo()?.username
                   }
                   alt=""
                   className="receiveMoneyModalDiv_area1_cont1_img"
+                /> */}
+                <QRCode
+                  value={getUserInfo()?.username}
+                  quietZone={5}
+                  eyeColor="#fff"
+                  bgColor="#161619"
+                  fgColor="#fff"
+                  logoImage="/img/tether_icon.png"
+                  eyeRadius={[
+                    [5, 5, 0, 5],
+                    [5, 5, 5, 0],
+                    [5, 0, 5, 5],
+                  ]}
+                  removeQrCodeBehindLogo={true}
+                  // logoPadding={5}
+                  // logoWidth={15}
+                  logoPaddingStyle="circle"
+                  className="depositMoneyDiv_cont_body_qr_div_qr"
                 />
-                <div className="receiveMoneyModalDiv_area1_cont1_t">
+                <div
+                  className="receiveMoneyModalDiv_area1_cont1_t"
+                  style={{ textAlign: "left" }}
+                >
                   Scan Qrcode or copy username below to receive money from other
                   Cube users.
                 </div>
               </div>
               <div className="receiveMoneyModalDiv_area1_cont2_address">
                 <div className="receiveMoneyModalDiv_area1_cont2_heading">
-                  Fort username
+                  Cube username
                 </div>
                 <div className="copy_qr_code_txt_div">
                   <span
