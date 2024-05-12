@@ -249,15 +249,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="depositMoneyDiv_cont_body_input_div2">
-                <div className="depositMoneyDiv_cont_body_input_div_div">
-                  <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                    <p> Invalid Account</p>
-                  </div>
-                </div>
-              </div>
-            )}
+            ) : null}
             <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
               <div className="depositMoneyDiv_cont_body_wallet_addr_div_title">
                 Withdrawal Amount:
