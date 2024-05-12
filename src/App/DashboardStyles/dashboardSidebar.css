@@ -11,15 +11,13 @@
 .dashBoardSideBarDiv_sideBar_div__active {
   display: flex;
   align-items: center;
-  background: #7200ff1a;
+  background: #7b3dc9;
   padding: 12px 12px;
   width: 200px;
   border-radius: 6px;
   box-shadow: 0px 0px 10px #000000;
   cursor: pointer;
-  color: #a053ff;
-  text-decoration: none;
-  border: solid 1px;
+  color: #ffffff;
 }
 .dashBoardSideBarDiv_sideBar_div {
   display: flex;

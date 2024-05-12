@@ -62,10 +62,7 @@ const Login = () => {
   };
   return (
     <div className="signup_div">
-      <section
-        className="signup_div_section"
-        style={{ backgroundImage: "url(/img/signup_bg.png)" }}
-      >
+      <section className="signup_div_section">
         <div className="custom_container">
           <div className="signup_div_section_div">
             <div className="signup_div_section_div_title">Welcome Back</div>
@@ -174,14 +171,15 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div class="background_gradient-parent">
+        {/* <div class="background_gradient-parent">
           <div class="background_gradient"></div>
-        </div>
-        <img
+        </div> */}
+        {/* <img
           src="/img/dark_home_sec_bg.svg"
           alt=""
           className="home_div_section1_bg"
-        />
+        /> */}
+        <img src="/img/login_bg.jpeg" alt="" className="signup_div_bg" />
       </section>
     </div>
   );

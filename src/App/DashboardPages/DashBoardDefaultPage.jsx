@@ -107,10 +107,14 @@ const DashBoardDefaultPage = () => {
       <div className="defaultPage_body">
         <div className="defaultPage_body_area1">
           <div className="defaultPage_body1">
-            <div className="defaultPage_body1_cont2">Your NGNC balance</div>
+            <div className="defaultPage_body1_cont2">Your CNGN balance</div>
 
             <div className="defaultPage_body1_cont1">
-              <span className="defaultPage_body1_cont1_span"> ₦</span>
+              <img
+                src="https://i.imgur.com/JXm7zwC.png"
+                alt=""
+                className="defaultPage_body1_cont1_span_img"
+              />
               {parseInt(userBal).toFixed(2)}
             </div>
           </div>

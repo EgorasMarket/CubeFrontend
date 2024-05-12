@@ -101,6 +101,7 @@ const DashboardHome = () => {
           </div>
         </div>
       </div>
+      <img src="/img/login_bg.jpeg" alt="" className="signup_div_bg2" />
     </div>
   );
 };

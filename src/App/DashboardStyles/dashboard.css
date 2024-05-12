@@ -14,12 +14,24 @@
   z-index: 2;
   margin-bottom: 2em;
 }
-
+.signup_div_bg2 {
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  position: absolute;
+  object-fit: cover;
+  /* z-index: 2; */
+  top: 0;
+  left: 0;
+  filter: blur(4px);
+}
 .dashBoardDiv2 {
   display: flex;
   gap: 10px;
   height: 100vh;
   overflow: scroll;
+  position: relative;
+  z-index: 2;
 }
 .loginArea1_inputArea_input {
   padding: 10px 15px;
