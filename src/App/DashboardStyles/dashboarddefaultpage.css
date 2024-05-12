@@ -289,12 +289,12 @@
   font-weight: 600;
 }
 .closeTranPopDiv {
-  background: #dff2e6;
-  color: #346f4c;
+  background: #f6f1ff;
+  color: #563f83;
   border-radius: 5px;
   font-size: 24px !important;
   cursor: pointer;
-  box-shadow: 0px 10px 10px #cae1d2;
+  box-shadow: 0px 10px 10px #000000;
 }
 .closeTranPopDiv:hover {
   color: #dff2e6;

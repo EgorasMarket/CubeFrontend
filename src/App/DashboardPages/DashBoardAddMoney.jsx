@@ -17,13 +17,19 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import "../DashboardStyles/dashboarddefaultpage.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import getUserInfo from "../../helper/userhelper";
+import { USER_ACCOUNT_NUMBER } from "../../Services/TransactionServices";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+
 const DashBoardAddMoney = () => {
   const [openCardModal, setOpenCardModal] = useState(false);
   const [openWalletModal, setOpenWalletModal] = useState(false);
   const [openFortUserModal, setOpenFortUserModal] = useState(false);
+  const [noBvn, setNoBvn] = useState(false);
   const [openBankTransferModal, setOpenBankTransferModal] = useState(false);
+  const [accountNumber, setAccountNumber] = useState("");
   const [amount, setAmount] = useState(0);
   const [amount2, setAmount2] = useState(0);
+  const [completeBvn, setCompleteBvn] = useState(false);
   const [walletAddress, setWalletAddress] = useState("0xxxxxxx");
   const [walletAddressInfo, setWalletAddressInfo] = useState("");
   const [bankDetails, setBankDetails] = useState(false);
@@ -63,6 +69,40 @@ const DashBoardAddMoney = () => {
   const timer = setTimeout(() => {
     setCopiedTxt(false);
   }, 1000);
+
+  const { data: getAccountNumber } = useQuery({
+    queryKey: "accountNumber",
+    queryFn: async () => {
+      const res = await USER_ACCOUNT_NUMBER();
+      console.log("====================================");
+      console.log(res);
+      if (res.code === 200) {
+        setAccountNumber("23444");
+        return;
+      }
+      if (res.status !== 200) {
+        if (
+          res.data.errorMessage == "Cannot creeate Account, BVN not provided"
+        ) {
+          setNoBvn(true);
+        } else {
+          console.log("====================================");
+          console.log(res.data.errorMessage);
+          console.log("====================================");
+        }
+        return;
+      }
+
+      return res;
+    },
+  });
+  const userAccountNumber = async () => {
+    await getAccountNumber();
+  };
+
+  useEffect(() => {
+    userAccountNumber();
+  }, []);
   return (
     <div className="dashBoardAddMoneyDiv">
       <div className="dashBoardAddMoneyDiv_title">Add Money</div>
@@ -91,9 +131,12 @@ const DashBoardAddMoney = () => {
             </div>
             <KeyboardArrowRightIcon className="dashBoardAddMoneyDiv_body_area1_cont2_icon" />
           </div> */}
+          {/* ToggleBankTransferModal */}
           <div
             className="dashBoardAddMoneyDiv_body_area1"
-            onClick={ToggleBankTransferModal}
+            onClick={() => {
+              noBvn === true ? setCompleteBvn(true) : ToggleBankTransferModal();
+            }}
           >
             <div className="dashBoardAddMoneyDiv_body_area1_cont1">
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
@@ -372,7 +415,7 @@ const DashBoardAddMoney = () => {
                 </div>
                 <div className="depositMoneyDiv_cont_body_qr_div">
                   <QRCode
-                    value={"0xfsy6e"}
+                    value={getUserInfo()?.wallet_address}
                     quietZone={5}
                     eyeColor="#fff"
                     bgColor="#161619"
@@ -401,13 +444,16 @@ const DashBoardAddMoney = () => {
                   <div className="depositMoneyDiv_cont_body_wallet_addr_div_input_div">
                     <input
                       type="text"
-                      value={"iuou87"}
+                      value={getUserInfo()?.wallet_address}
                       className="depositMoneyDiv_cont_body_wallet_addr_div_input"
                       id="myInput"
                     />
                     <button
                       className="depositMoneyDiv_cont_body_wallet_addr_div_btn"
-                      onClick={() => copyWalletAddress(walletAddress)}
+                      onClick={() =>
+                        copyWalletAddress(getUserInfo()?.wallet_address)
+                      }
+
                       // onMouseOut={outFunc}
                     >
                       Copy
@@ -524,6 +570,28 @@ const DashBoardAddMoney = () => {
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {completeBvn === true ? (
+        <div className="bvn_complete_modal">
+          <div className="bvn_complete_modal_cont">
+            <div className="bvn_complete_modal_cont_title">BVN REQUIRED</div>
+            <div className="bvn_complete_modal_cont_para">
+              Please complete your identity verification to use this feauture.
+            </div>
+            <div className="bvn_complete_modal_cont_btn_divs">
+              <button
+                className="bvn_complete_modal_cont_btn1"
+                onClick={() => setCompleteBvn(false)}
+              >
+                Cancel
+              </button>
+              <button className="bvn_complete_modal_cont_btn">
+                Complete verification
+              </button>
             </div>
           </div>
         </div>
