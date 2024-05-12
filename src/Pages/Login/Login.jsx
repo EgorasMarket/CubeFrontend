@@ -48,11 +48,10 @@ const Login = () => {
     },
     onSuccess: async (data) => {
       console.log(data, "alal");
-      queryClient.setQueriesData("login", data.data.user);
+      queryClient.setQueryData("login", data.data.user);
       localStorage.setItem("x-token", data?.data?.token);
       localStorage.setItem("user-info", JSON.stringify(data?.data?.user));
-
-      console.log(queryClient.getQueriesData(["login"]));
+      console.log(queryClient.getQueryData("login"));
     },
   });
 
