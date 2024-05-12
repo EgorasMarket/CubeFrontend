@@ -34,6 +34,7 @@
   margin-top: 4em;
   position: relative;
   z-index: 2;
+  color: #fff;
 }
 .signup_div_section_div_title {
   font-size: 32px;
@@ -85,7 +86,7 @@
   width: -webkit-fill-available;
 }
 .otp_modal_container_body_icon2 {
-  background: #26bf73;
+  background: #7a3abc;
   font-size: 16px !important;
   padding: 4px;
   border-radius: 6px;
@@ -118,7 +119,7 @@
   padding: 15px;
   border-radius: 10px;
   border: none;
-  background: #26bf73;
+  background: #7a3abc;
   color: #fff;
   display: flex;
   align-items: center;
@@ -151,7 +152,7 @@
   background: rgb(255, 255, 255) !important;
 }
 .select__option--is-selected {
-  background: #26bf73 !important;
+  background: #7a3abc !important;
 }
 .react-tel-input .form-control {
   width: 100% !important;
@@ -218,7 +219,7 @@
 }
 .signup_div_section_div_para_link {
   margin-left: 5px;
-  color: #26bf73;
+  color: #7a3abc;
   font-weight: 600;
 }
 
