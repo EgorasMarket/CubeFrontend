@@ -2,6 +2,7 @@ import React from "react";
 import "./DashboardStyles/dashboardHeader.css";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import getUserInfo from "../helper/userhelper";
 
 const DashboardHeader = () => {
   return (
@@ -37,12 +38,17 @@ const DashboardHeader = () => {
             <div className="dashBoardHeaderDiv_area2_cont2">
               <div className="dashBoardHeaderDiv_area2_cont2_div1">
                 <img
-                  src={`https://source.boringavatars.com/beam/30/${"cyntax"}`}
+                  src={`https://source.boringavatars.com/beam/30/${
+                    getUserInfo().username
+                  }`}
                   alt=""
                 />
               </div>
-              <div className="dashBoardHeaderDiv_area2_cont2_div2">cyntax</div>
-              <WbSunnyIcon className="lightIcon" />
+
+              <div className="dashBoardHeaderDiv_area2_cont2_div2">
+                {getUserInfo().username}
+              </div>
+              {/* <WbSunnyIcon className="lightIcon" /> */}
             </div>
           </div>
         </div>

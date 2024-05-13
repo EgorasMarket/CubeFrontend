@@ -217,10 +217,10 @@
   z-index: 1100;
 }
 .depositMoneyDiv_cont {
-  background: #ffffff;
+  background: #322b4d;
   /* height: 100%; */
   padding: 2em;
-  color: #000;
+  color: #fff;
   display: flex;
   width: 100%;
   max-width: 450px;
@@ -231,10 +231,10 @@
   animation-duration: 0.5s;
 }
 .depositMoneyDiv_contb {
-  background: #ffffff;
+  background: #352d4c;
   height: auto;
   padding: 2em 1em;
-  color: #000;
+  color: #fff;
   display: flex;
   width: 100%;
   max-width: 450px;
@@ -257,7 +257,7 @@
   padding-bottom: 1em;
 }
 .depositMoneyDiv_cont_title_cont_title {
-  color: #7a3abc;
+  color: #d1d1e5;
   font-weight: 600;
   font-size: 32px;
 }
@@ -316,6 +316,7 @@
   border-top: solid 1px #f1f1f1;
   padding-top: 2em;
   margin-top: 2em;
+  width: 100%;
 }
 .depositMoneyDiv_cont_2_btn {
   width: 100%;
@@ -327,7 +328,7 @@
   border: none;
 }
 .depositMoneyDiv_cont_body_input_div_div:hover {
-  border: solid #27bf749c;
+  border: solid #5327bf9c;
   /* color: #fff; */
 }
 .depositMoneyDiv_cont_body_input_div {
@@ -376,7 +377,7 @@
   margin-bottom: 5px;
 }
 .depositMoneyDiv_cont_body_input_div_div {
-  background: #e2e2e2;
+  background: #000000;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -394,7 +395,7 @@
   align-items: center;
   margin-right: 10px;
   padding: 5px 10px;
-  background: #ffffff;
+  background: #7b3abc;
   border-radius: 10px;
   font-weight: 500;
   font-size: 14px;
@@ -447,8 +448,8 @@
   padding: 15px;
   border-radius: 10px;
   border: none;
-  background: #e2e2e2;
-  color: #5d5d5d;
+  background: #1b1924;
+  color: #d6d2e6;
   padding-right: 6em;
   width: -webkit-fill-available;
 }

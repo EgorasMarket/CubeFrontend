@@ -35,14 +35,18 @@
 .dashBoardSideBarDiv_sideBar_div:hover {
   color: #fff;
 }
+.dashBoardSideBarDiv_sideBar_div__active .dashBoardSideBarDiv_sideBar_div_icon {
+  font-size: 25px !important;
+  fill: rgb(205 164 255);
+  color: #fff !important;
+}
 .dashBoardSideBarDiv_sideBar_div_icon {
   font-size: 25px !important;
-  fill: black;
 }
 .dashBoardSideBarDiv_sideBar_div_txt {
   margin-left: 10px;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
 }
 .dashBoardSideBarDiv_sideBar_div_last {
   display: flex;

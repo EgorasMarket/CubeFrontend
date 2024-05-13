@@ -8,79 +8,19 @@ import DashboardHeader from "./DashboardHeader";
 import DashBoardTransfer from "./DashboardPages/DashBoardTransfer";
 import DashBoardBills from "./DashboardPages/DashBoardBills";
 import DashBoardTransactions from "./DashboardPages/DashBoardTransactions";
-import Lottie from "lottie-react";
-import loading from "../lottieIcons/loading.json";
 import "./DashboardStyles/dashboard.css";
+import getUserInfo from "../helper/userhelper";
 const DashboardHome = () => {
-  const [loadingDiv, setLoadingDiv] = useState(true);
-  const [payload, setPayload] = useState({
-    id: 0,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    username: "",
-    referral: "",
-    countrycode: "",
-    profilePic: null,
-    isVerified: false,
-    has2fa: false,
-    user_pin: "",
-    createdAt: "",
-    updatedAt: "",
-  });
-  const currentPage = window.location.pathname;
-  const myArr = currentPage.split("/");
-  useEffect(() => {
-    setLoadingDiv(true);
-    const timer = setTimeout(() => {
-      setLoadingDiv(false);
-    }, 2000);
-  }, []);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(API_URL + "/api/me", null, config)
-  //     .then((data) => {
-  //       console.log(data.data.data.user);
-  //       setPayload({
-  //         id: data.data.data.user.id,
-  //         firstName: data.data.data.user.firstName,
-  //         lastName: data.data.data.user.lastName,
-  //         email: data.data.data.user.email,
-  //         phone: data.data.data.user.phone,
-  //         username: data.data.data.user.username,
-  //         referral: data.data.data.user.referral,
-  //         countrycode: data.data.data.user.countrycode,
-  //         profilePic: data.data.data.user.profilePic,
-  //         isVerified: data.data.data.user.isVerified,
-  //         has2fa: data.data.data.user.has2fa,
-  //         user_pin: data.data.data.user.user_pin,
-  //         createdAt: data.data.data.user.createdAt,
-  //         updatedAt: data.data.data.user.updatedAt,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  console.log(getUserInfo(), localStorage.getItem("x-token"));
+  if (
+    getUserInfo() === null ||
+    getUserInfo() === undefined ||
+    localStorage.getItem("x-token") === null
+  ) {
+    return (window.location.href = "/login");
+  }
 
   return (
-    // <>
-    //   {loadingDiv === true ? (
-    //     <div className="loading_div_area">
-    //       <Lottie
-    //         animationData={loading}
-    //         loop={true}
-    //         autoPlay={true}
-    //         className="loadingIcon"
-    //         preserveAspectRatio="xMidYMid meet"
-    //       />
-    //     </div>
-    //   ) : (
-
-    //   )}
-    // </>
     <div className="dashboard">
       <div className="dashBoardDiv1">
         <DashboardHeader />

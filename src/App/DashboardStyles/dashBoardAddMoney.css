@@ -90,13 +90,14 @@
   width: 100%;
   max-width: 425px;
   display: flex;
-  background: #fff;
+  background: #322b4d;
   flex-direction: column;
   align-items: center;
   padding: 2em;
   position: relative;
-  box-shadow: -12px 0px 20px #3a3a3a;
+  box-shadow: -12px 0px 20px #000000;
   animation: slideIn 0.5s linear;
+  color: #fff;
 }
 @keyframes slideIn {
   0% {
@@ -382,4 +383,18 @@
   color: #fff;
   width: 100%;
   margin-right: 10px;
+}
+.dashBoardAddMoneyDiv_cont1 {
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  padding: 2em;
+  background: #7c3ec942;
+  border-radius: 10px;
+  /* margin-right: 10px; */
+  cursor: pointer;
+  border: solid 1px #a578dc;
+  backdrop-filter: blur(10px);
+  margin-top: 2em;
+  color: #fff;
 }

@@ -6,6 +6,8 @@ import Select from "react-select";
 // import "react-phone-input-2/lib/plain.css";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import PulseLoader from "react-spinners/PulseLoader";
+
 // import { useDispatch, useSelector } from "react-redux";
 import ScaleLoader from "react-spinners/ScaleLoader";
 // import SuccessModal from "../../components/SuccessModal/SuccessModal";
@@ -18,12 +20,17 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useMutation } from "@tanstack/react-query";
 import { LOGIN, REGISTER } from "../../Services/auth.services";
+import SuccessModal from "../../Components/SuccessModal/SuccessModal";
+import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 // dummySelectData;
 const Signup = () => {
   // const dispatch = useDispatch();
   // const { payload, loading, error } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
-  // const [email,setEmail]
+  const [disable, setDisable] = useState(true);
+  const [success, setSuccess] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorTxt, setErrorTxt] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible2, setPasswordVisible2] = useState(false);
   const [mismatched, setMismatched] = useState(false);
@@ -39,7 +46,7 @@ const Signup = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: "register",
     mutationFn: async (payload) => {
       const res = await REGISTER(payload);
@@ -47,6 +54,15 @@ const Signup = () => {
     },
     onSuccess: (data) => {
       console.log(data, "alal");
+      if (data.code === 200) {
+        setSuccess(true);
+        return;
+      }
+      if (data.status !== 200) {
+        setErrorModal(true);
+        setErrorTxt(data.data.errorMessage);
+        return;
+      }
     },
   });
 
@@ -63,13 +79,16 @@ const Signup = () => {
       [id]: value,
     });
   };
-
+  useEffect(() => {
+    if (isPending) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [isPending]);
   return (
     <div className="signup_div">
-      <section
-        className="signup_div_section"
-        style={{ backgroundImage: "url(/img/signup_bg.png)" }}
-      >
+      <section className="signup_div_section">
         <div className="custom_container">
           <div className="signup_div_section_div">
             <div className="signup_div_section_div_title" onClick={register}>
@@ -99,23 +118,23 @@ const Signup = () => {
                 {/* ============ */}
                 {/* ============ */}
                 {/* ============ */}
-                {/* <label
-                    htmlFor="username"
-                    className="signup_div_section_div_container_form_label"
-                    style={{ display: "none" }}
-                  >
-                    *User Name:
-                  </label>
-                  <input
-                    id="dyey"
-                    type="text"
-                    value
-                    name="userName"
-                    className="signup_div_section_div_container_form_input"
-                    onChange={handleOnChange}
-                    // autoComplete="on"
-                    style={{ display: "none" }}
-                  /> */}
+                <label
+                  htmlFor="username"
+                  className="signup_div_section_div_container_form_label"
+                  style={{ display: "none" }}
+                >
+                  *User Name:
+                </label>
+                <input
+                  id="dyey"
+                  type="text"
+                  value
+                  name="userName"
+                  className="signup_div_section_div_container_form_input"
+                  // onChange={handleOnChange}
+                  // autoComplete="on"
+                  style={{ display: "none" }}
+                />
                 {/* ============ */}
                 {/* ============ */}
                 {/* ============ */}
@@ -248,14 +267,16 @@ const Signup = () => {
                 <button
                   className="signup_div_section_div_container_form_btn"
                   onClick={register}
+                  disabled={disable}
+
                   // disabled={submitDisable}
                 >
-                  {loading ? (
+                  {isPending ? (
                     <>
-                      <ScaleLoader color="#446f59" height={20} />
+                      <PulseLoader color="#fff" height={20} />
                     </>
                   ) : (
-                    " Create account"
+                    " Create Account"
                   )}
                 </button>
               </div>
@@ -269,14 +290,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-        <div class="background_gradient-parent">
-          <div class="background_gradient"></div>
-        </div>
-        <img
-          src="/img/dark_home_sec_bg.svg"
-          alt=""
-          className="home_div_section1_bg"
-        />
+        <img src="/img/login_bg.jpeg" alt="" className="signup_div_bg" />
       </section>
       {/* {otpModal ? (
         <OtpModal
@@ -306,6 +320,20 @@ const Signup = () => {
           }}
         />
       ) : null} */}
+      {success ? (
+        <SuccessModal
+          SuccesTxt={"You have successfully Signed up"}
+          successFunc={() => (window.location.href = "/login")}
+        />
+      ) : null}
+      {errorModal ? (
+        <ErrorModal
+          ErrorTxt={errorTxt}
+          errorFunc={() => {
+            setErrorModal(false);
+          }}
+        />
+      ) : null}
     </div>
   );
 };

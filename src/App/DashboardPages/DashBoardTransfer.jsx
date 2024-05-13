@@ -11,7 +11,7 @@ import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import getUserInfo from "../../helper/userhelper";
@@ -22,6 +22,8 @@ import {
   SEND_FUNDS_INTERNAL,
 } from "../../Services/TransactionServices";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+// import Lottie from "lottie-react";
+import loading from "../../lottieIcons/loading.json";
 
 const DashBoardTransfer = () => {
   const [openCardModal, setOpenCardModal] = useState(false);
@@ -49,7 +51,15 @@ const DashBoardTransfer = () => {
     amount: "",
     symbol: "NGNC",
   });
-
+  const [loadingDiv, setLoadingDiv] = useState(true);
+  const currentPage = window.location.pathname;
+  const myArr = currentPage.split("/");
+  useEffect(() => {
+    setLoadingDiv(true);
+    const timer = setTimeout(() => {
+      setLoadingDiv(false);
+    }, 2000);
+  }, []);
   const ToggleOpenCardModal = () => {
     setOpenCardModal(!openCardModal);
     setAmount(0);
@@ -187,11 +197,32 @@ const DashBoardTransfer = () => {
   const AddMax = () => {
     set;
   };
+  if (loadingDiv) {
+    return (
+      <div className="loading_div_area">
+        <Lottie
+          animationData={loading}
+          loop={true}
+          autoPlay={true}
+          className="loadingIcon"
+          preserveAspectRatio="xMidYMid meet"
+        />
+      </div>
+    );
+  }
   return (
     <div className="dashBoardAddMoneyDiv">
       <div className="dashBoardAddMoneyDiv_title">Send Money</div>
       <div className="dashBoardAddMoneyDiv_sub_title">
         How would you like to send money?
+      </div>
+      <div className="dashBoardAddMoneyDiv_cont">
+        <img
+          src="/img/send_icon.png"
+          alt=""
+          className="Transfer_withdraw_div_cont2_icon"
+        />
+        <div className="Transfer_withdraw_div_cont2_txt">Transfer Money</div>
       </div>
       <div className="dashBoardAddMoneyDiv_body">
         <div className="dashBoardAddMoneyDiv_body_area">
@@ -280,7 +311,7 @@ const DashBoardTransfer = () => {
                 <div className="receiveMoneyModalDiv_area2_inputArea_title">
                   Enter Amount
                 </div>
-                <NumberFormat
+                <NumericFormat
                   value={amount}
                   displayType={"number"}
                   thousandSeparator={true}
@@ -385,7 +416,7 @@ const DashBoardTransfer = () => {
                   </div>
                   <div className="availegc_bal_div">
                     <div className="availegc_bal_div_title">Available</div>
-                    <div className="availegc_bal_div_amount">100 NGNC</div>
+                    <div className="availegc_bal_div_amount">100 CNGN</div>
                   </div>
                 </div>
                 <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
@@ -403,13 +434,13 @@ const DashBoardTransfer = () => {
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Minimum single withdrawal amount: 1000 NGNC
+                      Minimum single withdrawal amount: 1000 CNGN
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Maximum single withdrawal amount: 1,000,000 NGNC
+                      Maximum single withdrawal amount: 1,000,000 CNGN
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
@@ -425,9 +456,14 @@ const DashBoardTransfer = () => {
             {/* ============ */}
             {/* ============ */}
             {/* ============ */}
-            <button onClick={send_crypto} className="receiveMoneyModalDiv_btn">
-              Withdraw NGNC
-            </button>
+            <div className="depositMoneyDiv_cont_2">
+              <button
+                className="depositMoneyDiv_cont_2_btn"
+                onClick={send_crypto}
+              >
+                Withdraw CNGN
+              </button>
+            </div>
           </div>
         </div>
       ) : null}
@@ -443,7 +479,7 @@ const DashBoardTransfer = () => {
             <div className="depositMoneyDiv_cont_1">
               <div className="depositMoneyDiv_cont_title_cont">
                 <div className="depositMoneyDiv_cont_title_cont_title">
-                  Send NGNC
+                  Send CNGN
                 </div>
                 <div className="depositMoneyDiv_cont_title_cont_para">
                   Send funds directly to a cube user
@@ -457,14 +493,14 @@ const DashBoardTransfer = () => {
                   <div className="depositMoneyDiv_cont_body_input_div_div">
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont1">
                       <img
-                        src="/img/tether_icon.png"
+                        src="https://i.imgur.com/JXm7zwC.png"
                         alt=""
                         className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
                       />
-                      Digital Naira
+                      Cube Naira
                     </div>
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                      NGNC
+                      CNGN
                     </div>
                   </div>
                 </div>
@@ -548,7 +584,7 @@ const DashBoardTransfer = () => {
                   </div>
                   <div className="availegc_bal_div">
                     <div className="availegc_bal_div_title">Available</div>
-                    <div className="availegc_bal_div_amount">90 NGNC</div>
+                    <div className="availegc_bal_div_amount">90 CNGN</div>
                   </div>
                 </div>
                 <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
@@ -580,12 +616,15 @@ const DashBoardTransfer = () => {
             </div>
             {/* = */}
             {/* = */}
-            <button
-              className="receiveMoneyModalDiv_btn"
-              onClick={send_crypto_internal}
-            >
-              Withdraw NGNC
-            </button>
+
+            <div className="depositMoneyDiv_cont_2">
+              <button
+                className="depositMoneyDiv_cont_2_btn"
+                onClick={send_crypto_internal}
+              >
+                Withdraw CNGN
+              </button>
+            </div>
           </div>
         </div>
       ) : null}

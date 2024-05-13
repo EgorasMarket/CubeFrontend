@@ -1,0 +1,9 @@
+.errorModalDiv_cont_button {
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  background: #eb5757;
+  color: #fff;
+  font-weight: 500;
+}

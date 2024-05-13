@@ -6,13 +6,14 @@ import cardIcon from "../../lottieIcons/cardIcon.json";
 import { QRCode } from "react-qrcode-logo";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-
+// import Lottie from "lottie-react";
+import loading from "../../lottieIcons/loading.json";
 import bankIcon from "../../lottieIcons/bankIcon.json";
 import blockChainIcon from "../../lottieIcons/blockchainIcon.json";
 import fortUsers from "../../lottieIcons/transferAppUsersIcon.json";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import "../DashboardStyles/dashboarddefaultpage.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -34,6 +35,15 @@ const DashBoardAddMoney = () => {
   const [walletAddressInfo, setWalletAddressInfo] = useState("");
   const [bankDetails, setBankDetails] = useState(false);
   const [copiedTxt, setCopiedTxt] = useState(false);
+  const [loadingDiv, setLoadingDiv] = useState(true);
+  const currentPage = window.location.pathname;
+  const myArr = currentPage.split("/");
+  useEffect(() => {
+    setLoadingDiv(true);
+    const timer = setTimeout(() => {
+      setLoadingDiv(false);
+    }, 2000);
+  }, []);
   const ToggleOpenCardModal = () => {
     setOpenCardModal(!openCardModal);
     setAmount(0);
@@ -103,11 +113,32 @@ const DashBoardAddMoney = () => {
   useEffect(() => {
     userAccountNumber();
   }, []);
+  if (loadingDiv) {
+    return (
+      <div className="loading_div_area">
+        <Lottie
+          animationData={loading}
+          loop={true}
+          autoPlay={true}
+          className="loadingIcon"
+          preserveAspectRatio="xMidYMid meet"
+        />
+      </div>
+    );
+  }
   return (
     <div className="dashBoardAddMoneyDiv">
       <div className="dashBoardAddMoneyDiv_title">Add Money</div>
       <div className="dashBoardAddMoneyDiv_sub_title">
         How would you like to receive money?
+      </div>
+      <div className="dashBoardAddMoneyDiv_cont1">
+        <img
+          src="/img/add_icon.png"
+          alt=""
+          className="Transfer_withdraw_div_cont1_icon"
+        />
+        <div className="Transfer_withdraw_div_cont1_txt">Add Money</div>
       </div>
       <div className="dashBoardAddMoneyDiv_body">
         <div className="dashBoardAddMoneyDiv_body_area">
@@ -219,7 +250,7 @@ const DashBoardAddMoney = () => {
                 <div className="receiveMoneyModalDiv_area2_inputArea_title">
                   Enter Amount
                 </div>
-                <NumberFormat
+                <NumericFormat
                   value={amount}
                   displayType={"number"}
                   thousandSeparator={true}
@@ -268,7 +299,7 @@ const DashBoardAddMoney = () => {
                     <div className="receiveMoneyModalDiv_area2_inputArea_title">
                       Enter Amount
                     </div>
-                    <NumberFormat
+                    <NumericFormat
                       value={amount2}
                       displayType={"number"}
                       thousandSeparator={true}
@@ -370,7 +401,7 @@ const DashBoardAddMoney = () => {
             <div className="depositMoneyDiv_cont_1">
               <div className="depositMoneyDiv_cont_title_cont">
                 <div className="depositMoneyDiv_cont_title_cont_title">
-                  Deposit NGNC
+                  Deposit CNGN
                 </div>
                 <div className="depositMoneyDiv_cont_title_cont_para">
                   Add funds directly from a blockchain account
@@ -384,14 +415,14 @@ const DashBoardAddMoney = () => {
                   <div className="depositMoneyDiv_cont_body_input_div_div">
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont1">
                       <img
-                        src="/img/tether_icon.png"
+                        src="https://i.imgur.com/JXm7zwC.png"
                         alt=""
                         className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
                       />
-                      Digital Naira
+                      Cube Naira
                     </div>
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                      NGNC
+                      CNGN
                     </div>
                   </div>
                 </div>
@@ -420,7 +451,7 @@ const DashBoardAddMoney = () => {
                     eyeColor="#fff"
                     bgColor="#161619"
                     fgColor="#fff"
-                    logoImage="/img/tether_icon.png"
+                    logoImage="https://i.imgur.com/JXm7zwC.png"
                     eyeRadius={[
                       [5, 5, 0, 5],
                       [5, 5, 5, 0],
@@ -471,7 +502,7 @@ const DashBoardAddMoney = () => {
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Send only NGNC to this deposit address
+                      Send only CNGN to this deposit address
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
@@ -521,7 +552,7 @@ const DashBoardAddMoney = () => {
                   eyeColor="#fff"
                   bgColor="#161619"
                   fgColor="#fff"
-                  logoImage="/img/tether_icon.png"
+                  logoImage="https://i.imgur.com/JXm7zwC.png"
                   eyeRadius={[
                     [5, 5, 0, 5],
                     [5, 5, 5, 0],

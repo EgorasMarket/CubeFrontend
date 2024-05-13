@@ -48,21 +48,21 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px rgb(234 234 234) inset !important;
+  -webkit-box-shadow: 0 0 0 30px rgb(230, 230, 230) inset !important;
 }
 input:focus-visible {
   outline: none;
   border: solid;
-  border-color: #42c98a75;
+  border-color: #7142c975;
   border-width: 1px;
-  box-shadow: 0px 0px 1px 4px #42c98a75;
+  box-shadow: 0px 0px 1px 4px #7142c975;
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 input:-internal-autofill-selected {
-  background-color: #222035a8 !important;
+  background-color: #4d4977a8 !important;
 }
 ::selection {
-  background-color: #42c98a75;
+  background-color: #6d42c975;
   color: #fff;
 }
 button:focus {
@@ -98,7 +98,7 @@ button:focus {
 .dark .shimmer {
   background-image: linear-gradient(
     to right,
-    #383838 8%,
+    #222222 8%,
     #6a6a6a 18%,
     #393939 33%
   ) !important;
@@ -292,7 +292,7 @@ input[type="checkbox"]:checked + .checkBox_agree_div_body_label:before {
   font-weight: 600;
   color: #ffffff;
   text-align: center;
-  background: #fd5623;
+  background: #7a3abc;
   /* height: 24px; */
   /* line-height: 1.1; */
 }

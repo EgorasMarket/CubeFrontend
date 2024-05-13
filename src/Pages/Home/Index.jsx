@@ -2,6 +2,9 @@ import React from "react";
 import Spline from "@splinetool/react-spline";
 import "./home.css";
 import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
+import SpeedIcon from "@mui/icons-material/Speed";
+import PublicIcon from "@mui/icons-material/Public";
 import Grid from "./Grid";
 function Home() {
   return (
@@ -12,16 +15,17 @@ function Home() {
             <div className="Home_div_section1_area">
               <div className="Home_div_section1_area_1">
                 <div className="Home_div_section1_area_1_title">
-                  Inclusive global{" "}
+                  Move Your
                   <span className="Home_div_section1_area_1_title_span">
-                    banking
-                  </span>{" "}
-                  designed just for you.
+                    {" "}
+                    Money
+                  </span>
+                  <br /> Without Borders.
                 </div>
                 <div className="Home_div_section1_area_1_para">
-                  Receive, send, exchange, and manage multiple currencies in one
-                  app. Open a foreign UK, US, and EU bank account from your
-                  phone for free.
+                  Experience seamless money transfers. Send and receive funds
+                  globally with ease, regardless of location, occupation, or
+                  income level.
                 </div>
                 <button className="Home_div_section1_area_1_btn">
                   Get started
@@ -90,58 +94,60 @@ function Home() {
           <div className="Home_div_section2_area">
             <div className="Home_div_section2_area_1">
               <div className="Home_div_section2_area_1_cont1">
-                <SafetyCheckIcon className="Home_div_section2_area_1_cont1_icon" />
+                <AccessibilityIcon className="Home_div_section2_area_1_cont1_icon" />
                 <div className="Home_div_section2_area_1_cont1_title">
-                  Secure & Safe Payments
+                  Inclusive Accessibility
                 </div>
                 <div className="Home_div_section2_area_1_cont1_para">
-                  By using our platform you are sure of very secure and fast
-                  payments within minutes.
+                  Anyone with a basic smartphone and data connection can utilize
+                  the Cube payment system, promoting financial inclusion for
+                  all.
                 </div>
               </div>
               <div className="Home_div_section2_area_1_cont1">
                 <SafetyCheckIcon className="Home_div_section2_area_1_cont1_icon" />
                 <div className="Home_div_section2_area_1_cont1_title">
-                  Secure & Safe Payments
+                  Stable Reliability
                 </div>
                 <div className="Home_div_section2_area_1_cont1_para">
-                  By using our platform you are sure of very secure and fast
-                  payments within minutes.
+                  Cube Coins are backed by a secure reserve of liquid assets,
+                  including cash and highly-tradable, short-term government
+                  securities, ensuring stability and peace of mind.
                 </div>
               </div>
               <div className="Home_div_section2_area_1_cont1">
-                <SafetyCheckIcon className="Home_div_section2_area_1_cont1_icon" />
+                <SpeedIcon className="Home_div_section2_area_1_cont1_icon" />
                 <div className="Home_div_section2_area_1_cont1_title">
-                  Secure & Safe Payments
+                  Effortless Speed
                 </div>
                 <div className="Home_div_section2_area_1_cont1_para">
-                  By using our platform you are sure of very secure and fast
-                  payments within minutes.
+                  Cube transactions are designed for swift and convenient money
+                  transfer and spending, regardless of location.
                 </div>
               </div>
               <div className="Home_div_section2_area_1_cont1">
-                <SafetyCheckIcon className="Home_div_section2_area_1_cont1_icon" />
+                <PublicIcon className="Home_div_section2_area_1_cont1_icon" />
                 <div className="Home_div_section2_area_1_cont1_title">
-                  Secure & Safe Payments
+                  Global Connectivity
                 </div>
                 <div className="Home_div_section2_area_1_cont1_para">
-                  By using our platform you are sure of very secure and fast
-                  payments within minutes.
+                  The Cube payment system fosters a more interconnected and
+                  accessible global financial landscape.
                 </div>
               </div>
             </div>
             <div className="Home_div_section2_area_2">
               <div className="Home_div_section2_area_2_title">
-                Digital banking services, manage your finances better.
+                The cube payment system is for everyone.
               </div>
               <div className="Home_div_section2_area_2_title_para1">
                 We're here to help people solve their biggest problems, starting
                 with money.
               </div>
               <div className="Home_div_section2_area_2_title_para2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                architecto accusamus expedita et voluptas quidem, autem placeat
-                laboriosam.
+                We envision a world where sending money internationally is as
+                effortless and inexpensive as sending a message, empowering
+                everyone to participate in a connected financial ecosystem.
               </div>
               <button className="Home_div_section2_area_2_btn">
                 Get started
@@ -163,12 +169,12 @@ function Home() {
           <div className="Home_div_section3_area">
             <div className="Home_div_section3_area_1">
               <div className="Home_div_section3_area_1_title">
-                USD, GBP & EUR bank accounts for free
+                African financial infrastructure with global ambitions
               </div>
               <div className="Home_div_section3_area_1_para">
-                Receive payments from your employers, clients, social media
-                platforms, and other businesses directly to your own foreign
-                account – without hidden fees
+                Experience seamless money transfers. Send and receive funds
+                globally with ease, regardless of location, occupation, or
+                income level.
               </div>
               <button className="Home_div_section3_area_1_btn">
                 Get started

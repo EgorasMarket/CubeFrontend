@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import CallMadeIcon from "@mui/icons-material/CallMade";
-
+import LoginIcon from "@mui/icons-material/Login";
 import "./header.css";
+import getUserInfo from "../../helper/userhelper";
 
 const Header = () => {
   const [headerMenu, setHeaderMenu] = useState(false);
@@ -62,11 +63,35 @@ const Header = () => {
                 <a href="#" className="header_div_area_2_link1">
                   About us
                 </a>
-                <button className="Airdrop_head_btn">Get started</button>
-                <MenuIcon
+                {localStorage.getItem("x-token") !== null ? (
+                  <>
+                    {" "}
+                    <a href="/app/home">
+                      {" "}
+                      <button className="Airdrop_head_btn2">
+                        Dashboard
+                        <LoginIcon className="Airdrop_head_btn_icon" />
+                      </button>
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <a href="/login">
+                      {" "}
+                      <button className="Airdrop_head_btn2">Login</button>
+                    </a>
+                    <a href="/register">
+                      {" "}
+                      <button className="Airdrop_head_btn">Register</button>
+                    </a>
+                  </>
+                )}
+
+                {/* <MenuIcon
                   className="header_div_area_2_menu_icon"
                   onClick={ToggleHeaderMenu}
-                />
+                /> */}
               </div>
             </div>
           </div>

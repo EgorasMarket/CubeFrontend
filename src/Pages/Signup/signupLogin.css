@@ -12,6 +12,7 @@
   /* z-index: 2; */
   top: 0;
   left: 0;
+  filter: blur(5px);
 }
 .react-international-phone-input {
   width: 100%;
@@ -80,7 +81,7 @@
   padding: 10px;
   border: solid 1px #dedede;
   font-size: 14px;
-  color: #b28678;
+  color: #000000;
   font-weight: 500;
   background: #f0f0f0;
 }
@@ -89,7 +90,7 @@
   padding: 10px;
   border: solid 1px #dedede;
   font-size: 14px;
-  color: #b28678;
+  color: #000000;
   font-weight: 500;
   background: #f0f0f0;
   width: -webkit-fill-available;
@@ -250,8 +251,8 @@
   font-weight: 500;
 }
 .signup_div_section_div_container_form_btn:disabled {
-  background: #ffe4da;
-  color: #ffbba6;
+  background: #50376a;
+  color: #2b2632;
   cursor: not-allowed;
 }
 @media screen and (max-width: 600px) {
@@ -259,6 +260,6 @@
     margin-top: 0;
   }
   .signup_div_section {
-    padding-top: 2em;
+    padding-top: 8em;
   }
 }

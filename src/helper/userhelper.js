@@ -1,8 +1,6 @@
 const getUserInfo = () => {
   if (!localStorage.getItem("user-info")) {
-    return {
-      email: "nnnnn",
-    };
+    return null;
   }
 
   const user = JSON.parse(localStorage.getItem("user-info"));

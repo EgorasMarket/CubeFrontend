@@ -17,7 +17,7 @@
 .signup_div_bg2 {
   width: 100%;
   height: 100%;
-  opacity: 0.1;
+  opacity: 0.08;
   position: absolute;
   object-fit: cover;
   /* z-index: 2; */
@@ -71,7 +71,7 @@
 
 .dashboardPages {
   width: 100%;
-  margin-left: 5em;
+  margin-left: 2em;
 }
 
 .loading_div_area {
@@ -90,5 +90,5 @@
 }
 
 .loadingIcon {
-  width: 200px;
+  width: 250px;
 }

@@ -5,6 +5,32 @@
 .defaultPage {
   color: #fff;
 }
+.hide_balance_toggle {
+  position: relative;
+  z-index: 2;
+}
+.loader_div {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  flex-direction: column;
+  align-items: center;
+  color: #c7b4e0;
+}
+.loader_div_span {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.defaultPage_body_area1_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  mix-blend-mode: luminosity;
+  /* display: none; */
+  opacity: 0.3;
+}
 
 .defaultPage_body1_cont1_span_img {
   width: 25px;
@@ -28,6 +54,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 .transactionBody_cont1_img_img {
   width: 30px;
@@ -43,6 +71,7 @@
   border-radius: 10px;
   border: solid 1px #8d7f9f;
   box-shadow: 0px 5px 26px #000000;
+  position: relative;
 }
 .defaultPage_body_area2_transaction_heading_link {
   color: #b7b1c2;
@@ -50,6 +79,8 @@
 .defaultPage_body1 {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 .defaultPage_body1_cont2 {
   color: rgb(255, 255, 255);
@@ -95,9 +126,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 1em;
-  background: #57546a;
+  background: #383546;
   margin-bottom: 1em;
-  border: solid 1px #8d7f9f;
+  border: solid 1px #60576c;
   box-shadow: 0px 10px 10px #000000;
   border-radius: 10px;
   cursor: pointer;
@@ -310,4 +341,51 @@
   font-size: 24px !important;
   cursor: pointer;
   box-shadow: 0px 10px 10px #cae1d2;
+}
+.Transfer_withdraw_div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+.Transfer_withdraw_div_cont1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2em;
+  background: #7c3ec942;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: solid 1px #a578dc;
+  backdrop-filter: blur(10px);
+}
+.Transfer_withdraw_div_cont1_icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 2em;
+}
+.Transfer_withdraw_div_cont1_txt {
+  font-size: 18px;
+  font-weight: 600;
+}
+.Transfer_withdraw_div_cont2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2em;
+  background: #0973fc57;
+  border-radius: 10px;
+  /* margin-right: 10px; */
+  cursor: pointer;
+  border: solid 1px #80b7ff;
+  backdrop-filter: blur(10px);
+}
+.Transfer_withdraw_div_cont2_icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 2em;
+}
+.Transfer_withdraw_div_cont2_txt {
+  font-size: 18px;
+  font-weight: 600;
 }

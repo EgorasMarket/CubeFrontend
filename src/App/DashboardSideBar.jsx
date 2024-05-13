@@ -8,6 +8,10 @@ import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import PowerSettingsNewTwoToneIcon from "@mui/icons-material/PowerSettingsNewTwoTone";
 import ReceiptLongTwoToneIcon from "@mui/icons-material/ReceiptLongTwoTone";
 import LightbulbTwoToneIcon from "@mui/icons-material/LightbulbTwoTone";
+import { DashboardSquare02Icon } from "hugeicons-react";
+import { MoneyAdd02Icon } from "hugeicons-react";
+import { SentIcon } from "hugeicons-react";
+import { Invoice03Icon } from "hugeicons-react";
 import Logout from "../Logout/Logout";
 import { Link } from "react-router-dom";
 const DashboardSideBar = () => {
@@ -47,7 +51,12 @@ const DashboardSideBar = () => {
         id="home"
         onClick={changeBg}
       >
-        <DashboardTwoToneIcon className="dashBoardSideBarDiv_sideBar_div_icon" />{" "}
+        <DashboardSquare02Icon
+          size={25}
+          className="dashBoardSideBarDiv_sideBar_div_icon"
+        />
+
+        {/* <DashboardTwoToneIcon className="dashBoardSideBarDiv_sideBar_div_icon" />{" "} */}
         <div className="dashBoardSideBarDiv_sideBar_div_txt"> Home</div>
       </Link>
       {/* <div className="dashBoardSideBarDiv_sideBar_div">
@@ -64,7 +73,11 @@ const DashboardSideBar = () => {
         id="add"
         onClick={changeBg}
       >
-        <AccountBalanceWalletTwoToneIcon className="dashBoardSideBarDiv_sideBar_div_icon" />{" "}
+        <MoneyAdd02Icon
+          size={25}
+          className="dashBoardSideBarDiv_sideBar_div_icon"
+        />
+
         <div className="dashBoardSideBarDiv_sideBar_div_txt"> Add Money</div>
       </Link>
       <Link
@@ -77,7 +90,7 @@ const DashboardSideBar = () => {
         id="transfer"
         onClick={changeBg}
       >
-        <ImportExportTwoToneIcon className="dashBoardSideBarDiv_sideBar_div_icon" />{" "}
+        <SentIcon size={25} className="dashBoardSideBarDiv_sideBar_div_icon" />
         <div className="dashBoardSideBarDiv_sideBar_div_txt"> Transfer</div>
       </Link>
       <Link
@@ -90,7 +103,10 @@ const DashboardSideBar = () => {
         id="transaction"
         onClick={changeBg}
       >
-        <ReceiptLongTwoToneIcon className="dashBoardSideBarDiv_sideBar_div_icon" />{" "}
+        <Invoice03Icon
+          size={25}
+          className="dashBoardSideBarDiv_sideBar_div_icon"
+        />
         <div className="dashBoardSideBarDiv_sideBar_div_txt"> Transactions</div>
       </Link>
       {/* <a

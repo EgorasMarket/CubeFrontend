@@ -239,14 +239,14 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
                   />
                   Nigerian Naira
                 </div> */}
-                  <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
+                  {/* <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
                     <input
                       placeholder="johndoe"
                       onChange={handleAccountNameOnChange}
                       value={beneficiary}
                       className="depositMoneyDiv_cont_body_wallet_addr_div_input"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : null}
@@ -306,7 +306,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
         </div>
         <div className="depositMoneyDiv_cont_2">
           <button className="depositMoneyDiv_cont_2_btn" onClick={handlePayout}>
-            Send Funds
+            Withdraw CNGN
           </button>
         </div>
 

@@ -15,17 +15,28 @@
   align-items: center;
 }
 .dashBoardHeaderDiv_area2_cont1 {
-  margin-right: 2em;
+  margin-right: 1em;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dashBoardHeaderDiv_area2_cont1_icon {
-  font-size: 30px !important;
-  color: #7e7e7e !important;
+  font-size: 24px !important;
+  color: #ffffff !important;
+  border: solid 1px;
+  padding: 3px;
+  border-radius: 25px;
+  background: #ffffff29;
 }
 .dashBoardHeaderDiv_area2_cont2 {
   display: flex;
   align-items: center;
+  border: solid 1px white;
+  padding: 6px 15px;
+  border-radius: 10px;
+  background: #ffffff24;
 }
 .dashBoardHeaderDiv_area2_cont2_div2 {
   font-size: 20px;
@@ -33,8 +44,11 @@
 }
 .dashBoardHeaderDiv_area2_cont2_div1 {
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dashBoardHeaderDiv_area2_cont1::after {
+/* .dashBoardHeaderDiv_area2_cont1::after {
   content: " ";
   position: absolute;
   bottom: 0;
@@ -45,7 +59,7 @@
   margin: auto;
   left: 50%;
   border-radius: 50px;
-}
+} */
 .lightIcon {
   margin-left: 1em;
   color: #505050;

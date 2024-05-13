@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../Signup/signupLogin.css";
 import ScaleLoader from "react-spinners/ScaleLoader";
+
+import PulseLoader from "react-spinners/PulseLoader";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { LOGIN, REGISTER } from "../../Services/auth.services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import SuccessModal from "../../Components/SuccessModal/SuccessModal";
+import ErrorModal from "../../Components/ErrorModal/ErrorModal";
+import NodataComp from "../../Components/NodatComp/NodataComp";
 
 // dummySelectData;
 const Login = () => {
@@ -12,17 +17,11 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [userPin, setUserPin] = useState(!null);
-  const [isLoading, setIsLoading] = useState(false);
   const [disable, setDisable] = useState(true);
   const [success, setSuccess] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorTxt, setErrorTxt] = useState("");
-  const [pinModal, setPinModal] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [otpDisable, setOtpDisable] = useState(false);
-  const [otpLoading, setOtpLoading] = useState(false);
-  const [otpModal, setOtpModal] = useState(false);
+
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -48,10 +47,19 @@ const Login = () => {
     },
     onSuccess: async (data) => {
       console.log(data, "alal");
-      queryClient.setQueryData("login", data.data.user);
-      localStorage.setItem("x-token", data?.data?.token);
-      localStorage.setItem("user-info", JSON.stringify(data?.data?.user));
-      console.log(queryClient.getQueryData("login"));
+      if (data.code === 200) {
+        queryClient.setQueryData("login", data.data.user);
+        localStorage.setItem("x-token", data?.data?.token);
+        localStorage.setItem("user-info", JSON.stringify(data?.data?.user));
+        console.log(queryClient.getQueryData("login"));
+        setSuccess(true);
+        return;
+      }
+      if (data.status !== 200) {
+        setErrorModal(true);
+        setErrorTxt(data.data.errorMessage);
+        return;
+      }
     },
   });
 
@@ -59,6 +67,14 @@ const Login = () => {
     console.log("april");
     await mutate(values);
   };
+  useEffect(() => {
+    if (isPending) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [isPending]);
+
   return (
     <div className="signup_div">
       <section className="signup_div_section">
@@ -71,7 +87,7 @@ const Login = () => {
                 htmlFor="email"
                 className="signup_div_section_div_container_form_label"
               >
-                *Email Address: {isPending ? "pending" : "not pending"}
+                *Email Address:
               </label>
               <input
                 type="email"
@@ -150,11 +166,12 @@ const Login = () => {
               <button
                 className="signup_div_section_div_container_form_btn"
                 onClick={login}
-                // disabled={disable}
+                // disabled={true}
+                disabled={disable}
               >
-                {isLoading ? (
+                {isPending ? (
                   <>
-                    <ScaleLoader color="#446f59" height={20} />
+                    <PulseLoader color="#fff" height={20} />
                   </>
                 ) : (
                   " Login"
@@ -164,7 +181,7 @@ const Login = () => {
 
             <div className="signup_div_section_div_para">
               Don't have an account?{"   "}
-              <a href="/signup" className="signup_div_section_div_para_link">
+              <a href="/register" className="signup_div_section_div_para_link">
                 Signup
               </a>
             </div>
@@ -180,6 +197,22 @@ const Login = () => {
         /> */}
         <img src="/img/login_bg.jpeg" alt="" className="signup_div_bg" />
       </section>
+      {success ? (
+        <SuccessModal
+          SuccesTxt={"You have successfully logged in"}
+          successFunc={() => (window.location.href = "/app/home")}
+        />
+      ) : null}
+      {errorModal ? (
+        <ErrorModal
+          ErrorTxt={errorTxt}
+          errorFunc={() => {
+            setErrorModal(false);
+          }}
+        />
+      ) : null}
+
+      {/* {success ? <SuccessModal /> : null} */}
     </div>
   );
 };

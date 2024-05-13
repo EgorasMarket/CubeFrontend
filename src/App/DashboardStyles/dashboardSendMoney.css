@@ -3,3 +3,17 @@
   font-weight: 700;
   color: #fff;
 }
+.dashBoardAddMoneyDiv_cont {
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  padding: 2em;
+  background: #0973fc57;
+  border-radius: 10px;
+  /* margin-right: 10px; */
+  cursor: pointer;
+  border: solid 1px #80b7ff;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  margin-top: 2em;
+}

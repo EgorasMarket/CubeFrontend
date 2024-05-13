@@ -1,11 +1,12 @@
 .transactionPage_title {
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 600;
   position: sticky;
   top: 0;
-  background: #f6f6f6;
+  background: no-repeat;
   padding: 0.5em 0.5em;
   border-radius: 10px;
+  color: #fff;
 }
 .transactionBodyTransactions {
   display: flex;
