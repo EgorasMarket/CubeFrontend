@@ -73,7 +73,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   position: relative;
-  /* height: 100vh; */
+  /* height: 100dvh; */
   /* overflow: scroll; */
   background: #000000;
 }
@@ -121,7 +121,7 @@ button:focus {
   position: fixed;
   top: 0%;
   width: -webkit-fill-available;
-  height: 100svh;
+  height: 100sdvh;
   background: #000000ab;
   left: 0;
   overflow: scroll;
@@ -248,7 +248,7 @@ button:focus {
 .Modal2_div_closeDiv {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: -webkit-fill-available;
   width: 100%;
   top: 0;
   left: 0;

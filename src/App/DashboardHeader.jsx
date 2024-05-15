@@ -3,6 +3,7 @@ import "./DashboardStyles/dashboardHeader.css";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import getUserInfo from "../helper/userhelper";
+import Logout from "../Logout/Logout";
 
 const DashboardHeader = () => {
   return (
@@ -49,6 +50,9 @@ const DashboardHeader = () => {
                 {getUserInfo().username}
               </div>
               {/* <WbSunnyIcon className="lightIcon" /> */}
+            </div>
+            <div className="logout_mobile">
+              <Logout />
             </div>
           </div>
         </div>

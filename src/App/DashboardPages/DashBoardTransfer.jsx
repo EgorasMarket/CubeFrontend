@@ -212,7 +212,7 @@ const DashBoardTransfer = () => {
   }
   return (
     <div className="dashBoardAddMoneyDiv">
-      <div className="dashBoardAddMoneyDiv_title">Send Money</div>
+      <div className="dashBoardAddMoneyDiv_title">Transfer Money</div>
       <div className="dashBoardAddMoneyDiv_sub_title">
         How would you like to send money?
       </div>

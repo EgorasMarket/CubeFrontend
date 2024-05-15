@@ -1,5 +1,4 @@
 @media screen and (max-width: 1245px) {
-
   /* hero  Section Start */
   .heroTitle4 {
     font-size: 45px;
@@ -27,7 +26,6 @@
 }
 
 @media screen and (max-width: 869px) {
-
   /* hero section start */
   .heroArea4 {
     display: flex;
@@ -59,7 +57,7 @@
 
   .privacy {
     width: 100%;
-    height: 100%;
+    height: -webkit-fill-available;
   }
 
   .PrivacyTitle {

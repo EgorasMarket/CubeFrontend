@@ -16,7 +16,7 @@
 }
 .header_div_area_1_div1 {
   width: 40px;
-  height: 100%;
+  height: -webkit-fill-available;
   position: relative;
   margin-right: 10px;
   justify-content: center;
@@ -371,14 +371,14 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background: #000000d9;
     display: flex;
     justify-content: flex-end;
     /* backdrop-filter: blur(5px); */
   }
   .headerMenuDiv_cont {
-    height: 100%;
+    height: -webkit-fill-available;
     width: 100%;
     max-width: 400px;
     padding: 1em 1em;
@@ -394,7 +394,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: -webkit-fill-available;
     margin-top: 1em;
     overflow: auto;
   }
