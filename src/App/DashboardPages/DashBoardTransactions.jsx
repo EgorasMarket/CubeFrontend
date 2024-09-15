@@ -25,6 +25,7 @@ const DashBoardTransactions = () => {
 
   const currentPage = window.location.pathname;
   const myArr = currentPage.split("/");
+
   useEffect(() => {
     setLoadingDiv(true);
     const timer = setTimeout(() => {
@@ -33,7 +34,7 @@ const DashBoardTransactions = () => {
   }, []);
 
   const { data: getTransaction, isPending: getTransactionLoding } = useQuery({
-    queryKey: "transaction",
+    queryKey: ["transaction"],
     queryFn: async () => {
       const res = await TRANSACTIONS();
       console.log("====================================");

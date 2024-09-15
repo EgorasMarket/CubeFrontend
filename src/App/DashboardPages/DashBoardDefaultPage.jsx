@@ -37,7 +37,7 @@ const DashBoardDefaultPage = () => {
 
   // this gives an object with dates as keys
   const { data: getTransaction, isPending: getTransactionLoding } = useQuery({
-    queryKey: "transaction",
+    queryKey: ["transaction"],
     queryFn: async () => {
       const res = await TRANSACTIONS();
       console.log("====================================");
@@ -52,7 +52,7 @@ const DashBoardDefaultPage = () => {
   });
 
   const { data: userBalance } = useQuery({
-    queryKey: "userBalance",
+    queryKey: ["userBalance"],
     queryFn: async () => {
       const res = await USER_BALANCE();
       console.log("====================================");

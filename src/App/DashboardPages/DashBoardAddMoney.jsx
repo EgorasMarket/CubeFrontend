@@ -18,16 +18,25 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import "../DashboardStyles/dashboarddefaultpage.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import getUserInfo from "../../helper/userhelper";
-import { USER_ACCOUNT_NUMBER } from "../../Services/TransactionServices";
+import {
+  GENERATE_WATU_BANK_ACCOUNT,
+  UPDATE_BVN,
+  USER_ACCOUNT_NUMBER,
+} from "../../Services/TransactionServices";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { useDispatch, useSelector } from "react-redux";
+import { updateBankDetails } from "../../features/userSlice/userSlice";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const DashBoardAddMoney = () => {
+  const dispatch = useDispatch();
+  const { details, bank_details } = useSelector((state) => state.user);
+
   const [openCardModal, setOpenCardModal] = useState(false);
   const [openWalletModal, setOpenWalletModal] = useState(false);
   const [openFortUserModal, setOpenFortUserModal] = useState(false);
   const [noBvn, setNoBvn] = useState(false);
   const [openBankTransferModal, setOpenBankTransferModal] = useState(false);
-  const [accountNumber, setAccountNumber] = useState("");
   const [amount, setAmount] = useState(0);
   const [amount2, setAmount2] = useState(0);
   const [completeBvn, setCompleteBvn] = useState(false);
@@ -36,6 +45,9 @@ const DashBoardAddMoney = () => {
   const [bankDetails, setBankDetails] = useState(false);
   const [copiedTxt, setCopiedTxt] = useState(false);
   const [loadingDiv, setLoadingDiv] = useState(true);
+  const [isPending, setIsPending] = useState(false);
+  const [bvn, setBvn] = useState("");
+
   const currentPage = window.location.pathname;
   const myArr = currentPage.split("/");
   useEffect(() => {
@@ -80,17 +92,44 @@ const DashBoardAddMoney = () => {
     setCopiedTxt(false);
   }, 1000);
 
+  const handleBVNOnChange = (e) => {
+    const { value } = e.target;
+
+    if (value.length > 11) {
+      return;
+    }
+
+    setBvn(value);
+  };
+
+  const submitBVN = async () => {
+    setIsPending(true);
+    const res = await UPDATE_BVN({ bvn });
+    console.log(res);
+    if (!res.success) {
+      alert("failed to update BVN");
+      return;
+    }
+
+    alert("successfully submitted bvn");
+    window.location.reload();
+  };
+
   const { data: getAccountNumber } = useQuery({
-    queryKey: "accountNumber",
+    queryKey: ["accountNumber"],
     queryFn: async () => {
-      const res = await USER_ACCOUNT_NUMBER();
+      // dispatch(updateBankDetails({}));
+
+      const res = await GENERATE_WATU_BANK_ACCOUNT();
       console.log("====================================");
-      console.log(res);
+      console.log(res, "oma");
       if (res.code === 200) {
-        setAccountNumber("23444");
-        return;
+        dispatch(updateBankDetails(res?.data?.vA?.data));
+        return res?.data?.vA?.data;
       }
       if (res.status !== 200) {
+        dispatch(updateBankDetails({}));
+
         if (
           res.data.errorMessage == "Cannot creeate Account, BVN not provided"
         ) {
@@ -100,19 +139,32 @@ const DashBoardAddMoney = () => {
           console.log(res.data.errorMessage);
           console.log("====================================");
         }
-        return;
+        return {};
       }
 
       return res;
     },
   });
-  const userAccountNumber = async () => {
-    await getAccountNumber();
-  };
+  // const userAccountNumber = async () => {
+  //   await getAccountNumber();
+  // };
 
-  useEffect(() => {
-    userAccountNumber();
-  }, []);
+  // useEffect(() => {
+  //   userAccountNumber();
+  // }, []);
+
+  // const generateAccount = async () => {
+  //   const res = await GENERATE_WATU_BANK_ACCOUNT();
+
+  //   console.log(res, "response...");
+  //   if (!res.success) return;
+
+  //   await dispatch(setBankDetails(res.data.vA.data));
+  //   // setAccountInfo(res.data.vA.data);
+  // };
+  // useEffect(() => {
+  //   generateAccount();
+  // }, []);
   if (loadingDiv) {
     return (
       <div className="loading_div_area">
@@ -126,6 +178,7 @@ const DashBoardAddMoney = () => {
       </div>
     );
   }
+
   return (
     <div className="dashBoardAddMoneyDiv">
       <div className="dashBoardAddMoneyDiv_title">Add Money</div>
@@ -327,61 +380,132 @@ const DashBoardAddMoney = () => {
                 <div className="backDiv" onClick={ToggleBankDetails}>
                   <KeyboardArrowLeftIcon /> Back
                 </div>
-                <div className="receiveMoneyModalDiv_area1">
-                  <Lottie
-                    animationData={bankIcon}
-                    loop={true}
-                    autoPlay={true}
-                    className="receiveMoneyModalDiv_area1_img"
-                    preserveAspectRatio="xMidYMid meet"
-                  />
+                {bank_details?.account_number ? (
+                  <>
+                    <div className="receiveMoneyModalDiv_area1">
+                      <Lottie
+                        animationData={bankIcon}
+                        loop={true}
+                        autoPlay={true}
+                        className="receiveMoneyModalDiv_area1_img"
+                        preserveAspectRatio="xMidYMid meet"
+                      />
 
-                  <div className="receiveMoneyModalDiv_area1_text">
-                    The account number provided is unique to your fort account.
-                  </div>
-                </div>
-                <div className="receiveMoneyModalDiv_area2">
-                  <div className="fund_bank_account_details_div">
-                    <div className="fund_bank_account_details_div_cont1">
-                      <div className="fund_bank_account_details_div_cont1_head">
-                        1. Copy the account details provided below.
+                      <div className="receiveMoneyModalDiv_area1_text">
+                        The account number provided is unique to your Cube
+                        account.
                       </div>
-                      <div className="fund_bank_account_details_div_cont1_body">
-                        <div className="fund_bank_account_details_div_cont1_body_area1">
-                          <div className="fund_bank_account_details_div_cont1_body_area1_head">
-                            Bank Name
+                    </div>
+                    <div className="receiveMoneyModalDiv_area2">
+                      <div className="fund_bank_account_details_div">
+                        <div className="fund_bank_account_details_div_cont1">
+                          <div className="fund_bank_account_details_div_cont1_head">
+                            1. Copy the account details provided below.
                           </div>
-                          <div className="fund_bank_account_details_div_cont1_body_area1_body">
-                            Wema Bank PLC
+                          <div className="">
+                            <div className="">
+                              <div className="fund_bank_account_details_div_cont1_body_area1_head">
+                                Bank Name
+                              </div>
+                              <div
+                              // className="fund_bank_account_details_div_cont1_body_area1_body"
+                              >
+                                {bank_details?.bank_name} ({" "}
+                                {bank_details?.account_name})
+                              </div>
+                            </div>
+                            <div className="fund_bank_account_details_div_cont1_body_area1">
+                              <div className="fund_bank_account_details_div_cont1_body_area1_head">
+                                Bank Account Number
+                              </div>
+                              <div className="fund_bank_account_details_div_cont1_body_area1_body">
+                                {bank_details?.account_number}
+                                {bank_details?.accountName}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div className="fund_bank_account_details_div_cont1_body_area1">
-                          <div className="fund_bank_account_details_div_cont1_body_area1_head">
-                            Bank Account Number
+                        <div className="fund_bank_account_details_div_cont1">
+                          <div className="fund_bank_account_details_div_cont1_head">
+                            2. Transfer {amount2} using Mobile Banking.
                           </div>
-                          <div className="fund_bank_account_details_div_cont1_body_area1_body">
-                            7351202447 (Savings Account)
+                        </div>
+                        <div className="fund_bank_account_details_div_cont1">
+                          <div className="fund_bank_account_details_div_cont1_head">
+                            3. Your Fort balance will be funded immediately.
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="fund_bank_account_details_div_cont1">
-                      <div className="fund_bank_account_details_div_cont1_head">
-                        2. Transfer {amount2} using Mobile Banking.
+                      <div className="receiveMoneyModalDiv_area2_inputArea2">
+                        <button className="receiveMoneyModalDiv_area2_inputArea2_btn">
+                          Copy Account Number
+                        </button>
                       </div>
                     </div>
-                    <div className="fund_bank_account_details_div_cont1">
-                      <div className="fund_bank_account_details_div_cont1_head">
-                        3. Your Fort balance will be funded immediately.
+                  </>
+                ) : (
+                  <>
+                    <div className="custom_container">
+                      <div className="signup_div_section_div">
+                        <div className="signup_div_section_div_title">
+                          Submit BVN to Generate Account!
+                        </div>
+
+                        <div className="signup_div_section_div_container_form">
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          <label
+                            htmlFor="password"
+                            className="signup_div_section_div_container_form_label"
+                          >
+                            BVN:
+                          </label>
+                          <div className="password_div">
+                            <input
+                              type={"number"}
+                              id="password"
+                              name="password"
+                              onChange={handleBVNOnChange}
+                              // onChange={(e) => setBvn(e.target.value)}
+                              className="signup_div_section_div_container_form_input_pasowrd"
+                              autoComplete="off"
+                              value={bvn}
+                            />
+                          </div>
+
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          {/* ============ */}
+                          <button
+                            className="signup_div_section_div_container_form_btn"
+                            onClick={submitBVN}
+                            // disabled={true}
+                            // disabled={disable}
+                          >
+                            {isPending ? (
+                              <>
+                                <PulseLoader color="#fff" height={20} />
+                              </>
+                            ) : (
+                              " Submits"
+                            )}
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="receiveMoneyModalDiv_area2_inputArea2">
-                    <button className="receiveMoneyModalDiv_area2_inputArea2_btn">
-                      Copy Account Number
-                    </button>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
             </div>
           )}
