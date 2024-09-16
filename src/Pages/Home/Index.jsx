@@ -5,6 +5,7 @@ import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import SpeedIcon from "@mui/icons-material/Speed";
 import PublicIcon from "@mui/icons-material/Public";
+import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import Grid from "./Grid";
 function Home() {
   return (
@@ -192,6 +193,126 @@ function Home() {
               alt=""
               className="grains_ellipse"
             />
+          </div>
+        </div>
+      </section>
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      <section className="Home_div_section4">
+        <div className="custom_container">
+          <div className="Home_div_section4_area">
+            <div className="Home_div_section4_area_1">How it works</div>
+            <div className="Home_div_section4_area_2">
+              <div className="Home_div_section4_area_2_cont1">
+                <AccessibilityIcon className="Home_div_section4_area_2_cont_icon" />
+                <div className="Home_div_section4_area_2_cont_title">
+                  Know Your Customer
+                </div>
+                <div className="Home_div_section4_area_2_cont_para">
+                  ComplyCube provides a complete set of Know Your Customer (KYC)
+                  building blocks to support virtually any business model.
+                </div>
+              </div>
+              <div className="Home_div_section4_area_2_cont1">
+                <AccessibilityIcon className="Home_div_section4_area_2_cont_icon" />
+                <div className="Home_div_section4_area_2_cont_title">
+                  Know Your Customer
+                </div>
+                <div className="Home_div_section4_area_2_cont_para">
+                  ComplyCube provides a complete set of Know Your Customer (KYC)
+                  building blocks to support virtually any business model.
+                </div>
+              </div>
+              <div className="Home_div_section4_area_2_cont1">
+                <AccessibilityIcon className="Home_div_section4_area_2_cont_icon" />
+                <div className="Home_div_section4_area_2_cont_title">
+                  Know Your Customer
+                </div>
+                <div className="Home_div_section4_area_2_cont_para">
+                  ComplyCube provides a complete set of Know Your Customer (KYC)
+                  building blocks to support virtually any business model.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      <section className="Home_div_section5">
+        <div className="custom_container">
+          <div className="Home_div_section5_area">
+            <div className="Home_div_section5_area_1">
+              <div className="Home_div_section5_area_1_title">
+                Built with developer productivity in mind
+              </div>
+              <div className="Home_div_section5_area_1_para">
+                In addition to our best-in-class API, we provide client
+                libraries, capture SDKs, and hosted solutions to enable you to
+                integrate with us as quickly and efficiently as possible.
+              </div>
+            </div>
+            <div className="Home_div_section5_area_2">
+              <img
+                src="/img/dummy_img_home.svg"
+                alt=""
+                className="Home_div_section5_area_2_img"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      {/* ======== */}
+      <section className="Home_div_section6">
+        <div className="custom_container">
+          <div className="Home_div_section6_area">
+            <div className="Home_div_section6_area_1">
+              <div className="Home_div_section6_area_1_title">
+                Ready to get started?
+                <br /> Create an account or get in touch.
+              </div>
+              <div className="Home_div_section6_area_1_tags">
+                <div className="Home_div_section6_area_1_tag1">
+                  <CheckRoundedIcon className="Home_div_section6_area_1_tag1_icon" />
+                  <div className="Home_div_section6_area_1_tag1_txt">
+                    Easy to integrate
+                  </div>
+                </div>
+                <div className="Home_div_section6_area_1_tag1">
+                  <CheckRoundedIcon className="Home_div_section6_area_1_tag1_icon" />
+                  <div className="Home_div_section6_area_1_tag1_txt">
+                    Global coverage
+                  </div>
+                </div>
+                <div className="Home_div_section6_area_1_tag1">
+                  <CheckRoundedIcon className="Home_div_section6_area_1_tag1_icon" />
+                  <div className="Home_div_section6_area_1_tag1_txt">
+                    Complete solution
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="Home_div_section6_area_2">
+              <button className="Home_div_section6_area_2_btn">
+                Get started
+              </button>
+            </div>
           </div>
         </div>
       </section>
