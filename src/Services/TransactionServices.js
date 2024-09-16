@@ -8,6 +8,8 @@ import {
   LIST_BANKS_ROUTE,
   VERIFY_BANK_ROUTE,
   PROCESS_FIAT_CASHOUT_ROUTE,
+  GENERATE_BANK_ACCOUNT_ROUTE,
+  UPDATE_BVN_ROUTE,
 } from "./routes";
 
 export const LIST_BANKS = async () => {
@@ -37,6 +39,14 @@ export const USER_BALANCE = async () => {
 export const USER_ACCOUNT_NUMBER = async () => {
   try {
     const res = await server.get(GET_USER_BANK_NUMBER_ROUTE);
+    return res.data;
+  } catch (error) {
+    return error.response || error.message;
+  }
+};
+export const GENERATE_WATU_BANK_ACCOUNT = async () => {
+  try {
+    const res = await server.post(GENERATE_BANK_ACCOUNT_ROUTE);
     return res.data;
   } catch (error) {
     return error.response || error.message;
@@ -76,6 +86,14 @@ export const PAYOUT_TO_BANK = async ({ bank_info, amount, symbol }) => {
       symbol,
       bank_info,
     });
+    return res.data;
+  } catch (error) {
+    return error.response || error.message;
+  }
+};
+export const UPDATE_BVN = async ({ bvn }) => {
+  try {
+    const res = await server.post(`${UPDATE_BVN_ROUTE}/${bvn}`);
     return res.data;
   } catch (error) {
     return error.response || error.message;

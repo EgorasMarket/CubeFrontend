@@ -10,9 +10,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import SuccessModal from "../../Components/SuccessModal/SuccessModal";
 import ErrorModal from "../../Components/ErrorModal/ErrorModal";
 import NodataComp from "../../Components/NodatComp/NodataComp";
+import { useDispatch } from "react-redux";
+import { setDetails } from "../../features/userSlice/userSlice";
 
 // dummySelectData;
 const Login = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -50,12 +53,16 @@ const Login = () => {
       if (data.code === 200) {
         queryClient.setQueryData("login", data.data.user);
         localStorage.setItem("x-token", data?.data?.token);
+
+        //dispatch to the store
+        dispatch(setDetails(data?.data?.user));
         localStorage.setItem("user-info", JSON.stringify(data?.data?.user));
         console.log(queryClient.getQueryData("login"));
         setSuccess(true);
         return;
       }
       if (data.status !== 200) {
+        dispatch(setDetails({}));
         setErrorModal(true);
         setErrorTxt(data.data.errorMessage);
         return;
