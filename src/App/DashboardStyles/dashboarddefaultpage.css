@@ -361,6 +361,7 @@
   cursor: pointer;
   border: solid 1px #a578dc;
   backdrop-filter: blur(10px);
+  color: #fff;
 }
 .Transfer_withdraw_div_cont1_icon {
   width: 40px;
@@ -382,6 +383,7 @@
   cursor: pointer;
   border: solid 1px #80b7ff;
   backdrop-filter: blur(10px);
+  color: #fff;
 }
 .Transfer_withdraw_div_cont2_icon {
   width: 40px;

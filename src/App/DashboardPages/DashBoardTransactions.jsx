@@ -85,7 +85,7 @@ const DashBoardTransactions = () => {
       <div className="loading_div_area">
         <Lottie
           animationData={loading}
-          loop={true}
+          loop={false}
           autoPlay={true}
           className="loadingIcon"
           preserveAspectRatio="xMidYMid meet"

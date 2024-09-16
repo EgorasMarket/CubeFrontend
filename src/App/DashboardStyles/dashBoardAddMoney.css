@@ -125,7 +125,8 @@
   font-size: 28px;
   line-height: 1.2;
   font-weight: 600;
-  color: #4b4b4b;
+  color: #ffffff;
+  margin-top: 1em;
 }
 .receiveMoneyModalDiv_area2 {
   display: flex;
@@ -153,9 +154,10 @@
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-  background: var(--default_green_color);
+  background: #ffffff;
   border: none;
-  color: #fff;
+  font-weight: 600;
+  color: #322b4d;
 }
 .receiveMoneyModalDiv_area2_inputArea2_btn:disabled {
   background: #cbcbcb;

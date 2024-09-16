@@ -170,7 +170,7 @@ const DashBoardAddMoney = () => {
       <div className="loading_div_area">
         <Lottie
           animationData={loading}
-          loop={true}
+          loop={false}
           autoPlay={true}
           className="loadingIcon"
           preserveAspectRatio="xMidYMid meet"
@@ -203,7 +203,7 @@ const DashBoardAddMoney = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={cardIcon}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -226,7 +226,7 @@ const DashBoardAddMoney = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={bankIcon}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -246,7 +246,7 @@ const DashBoardAddMoney = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={blockChainIcon}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -266,7 +266,7 @@ const DashBoardAddMoney = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={fortUsers}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -289,7 +289,7 @@ const DashBoardAddMoney = () => {
             <div className="receiveMoneyModalDiv_area1">
               <Lottie
                 animationData={cardIcon}
-                loop={true}
+                loop={false}
                 autoPlay={true}
                 className="receiveMoneyModalDiv_area1_img"
                 preserveAspectRatio="xMidYMid meet"
@@ -337,7 +337,7 @@ const DashBoardAddMoney = () => {
                 <div className="receiveMoneyModalDiv_area1">
                   <Lottie
                     animationData={bankIcon}
-                    loop={true}
+                    loop={false}
                     autoPlay={true}
                     className="receiveMoneyModalDiv_area1_img"
                     preserveAspectRatio="xMidYMid meet"
@@ -385,7 +385,7 @@ const DashBoardAddMoney = () => {
                     <div className="receiveMoneyModalDiv_area1">
                       <Lottie
                         animationData={bankIcon}
-                        loop={true}
+                        loop={false}
                         autoPlay={true}
                         className="receiveMoneyModalDiv_area1_img"
                         preserveAspectRatio="xMidYMid meet"
@@ -525,7 +525,7 @@ const DashBoardAddMoney = () => {
             <div className="depositMoneyDiv_cont_1">
               <div className="depositMoneyDiv_cont_title_cont">
                 <div className="depositMoneyDiv_cont_title_cont_title">
-                  Deposit CNGN
+                  Deposit NGNT
                 </div>
                 <div className="depositMoneyDiv_cont_title_cont_para">
                   Add funds directly from a blockchain account
@@ -543,10 +543,10 @@ const DashBoardAddMoney = () => {
                         alt=""
                         className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
                       />
-                      Cube Naira
+                      Naira Token
                     </div>
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                      CNGN
+                      NGNT
                     </div>
                   </div>
                 </div>
@@ -626,7 +626,7 @@ const DashBoardAddMoney = () => {
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Send only CNGN to this deposit address
+                      Send only NGNT to this deposit address
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">

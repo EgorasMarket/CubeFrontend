@@ -12,7 +12,7 @@ import {
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
 const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
-  const symbol = "NGNC";
+  const symbol = "NGNT";
   const [loading, setLoading] = useState(false);
   const [pin, setPin] = useState("");
   const [pinModal, setPinModal] = useState(false);
@@ -274,7 +274,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
               </div>
               <div className="availegc_bal_div">
                 <div className="availegc_bal_div_title">Available</div>
-                <div className="availegc_bal_div_amount">100 NGN</div>
+                <div className="availegc_bal_div_amount">100 NGNT</div>
               </div>
             </div>
             <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
@@ -306,7 +306,7 @@ const WithdrawNairaComponent = ({ ToggleWithdrawNairaBankModal, balance }) => {
         </div>
         <div className="depositMoneyDiv_cont_2">
           <button className="depositMoneyDiv_cont_2_btn" onClick={handlePayout}>
-            Withdraw CNGN
+            Withdraw NGNT
           </button>
         </div>
 

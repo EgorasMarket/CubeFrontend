@@ -16,6 +16,7 @@ import { TRANSACTIONS, USER_BALANCE } from "../../Services/TransactionServices";
 import { numberWithCommas } from "../../assets/js/numberWithCommas";
 // import SwitchToggle from "../../Components/SwitchToggle/SwitchToggle";
 import SwitchToggle2 from "../../Components/SwitchToggle/SwitchToggle2";
+import { Link } from "react-router-dom";
 
 const DashBoardDefaultPage = () => {
   const [balance, setBalance] = useState(0);
@@ -127,7 +128,7 @@ const DashBoardDefaultPage = () => {
       <div className="loading_div_area">
         <Lottie
           animationData={loading}
-          loop={true}
+          loop={false}
           autoPlay={true}
           className="loadingIcon"
           preserveAspectRatio="xMidYMid meet"
@@ -144,7 +145,7 @@ const DashBoardDefaultPage = () => {
       <div className="defaultPage_body">
         <div className="defaultPage_body_area1">
           <div className="defaultPage_body1">
-            <div className="defaultPage_body1_cont2">Your CNGN balance</div>
+            <div className="defaultPage_body1_cont2">Your NGNT balance</div>
 
             <div className="defaultPage_body1_cont1">
               <img
@@ -173,15 +174,15 @@ const DashBoardDefaultPage = () => {
           />
         </div>
         <div className="Transfer_withdraw_div">
-          <div className="Transfer_withdraw_div_cont1">
+          <Link to="/app/add-money" className="Transfer_withdraw_div_cont1">
             <img
               src="/img/add_icon.png"
               alt=""
               className="Transfer_withdraw_div_cont1_icon"
             />
             <div className="Transfer_withdraw_div_cont1_txt">Add Money</div>
-          </div>
-          <div className="Transfer_withdraw_div_cont2">
+          </Link>
+          <Link to="/app/send-money" className="Transfer_withdraw_div_cont2">
             <img
               src="/img/send_icon.png"
               alt=""
@@ -190,7 +191,7 @@ const DashBoardDefaultPage = () => {
             <div className="Transfer_withdraw_div_cont2_txt">
               Transfer Money
             </div>
-          </div>
+          </Link>
         </div>
         <div className="defaultPage_body_area2">
           <div className="defaultPage_body_area2_cont1">

@@ -42,14 +42,14 @@ const DashBoardTransfer = () => {
   const [userBal, setUserBal] = useState(1000);
   const [payload, setPayload] = useState({
     amount: "",
-    symbol: "NGNC",
+    symbol: "NGNT",
     network: "Egochain",
     wallet_address: "",
   });
   const [payload2, setPayload2] = useState({
     username_email: "",
     amount: "",
-    symbol: "NGNC",
+    symbol: "NGNT",
   });
   const [loadingDiv, setLoadingDiv] = useState(true);
   const currentPage = window.location.pathname;
@@ -202,7 +202,7 @@ const DashBoardTransfer = () => {
       <div className="loading_div_area">
         <Lottie
           animationData={loading}
-          loop={true}
+          loop={false}
           autoPlay={true}
           className="loadingIcon"
           preserveAspectRatio="xMidYMid meet"
@@ -234,7 +234,7 @@ const DashBoardTransfer = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={bankIcon}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -254,7 +254,7 @@ const DashBoardTransfer = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={blockChainIcon}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -274,7 +274,7 @@ const DashBoardTransfer = () => {
               <div className="dashBoardAddMoneyDiv_body_area1_icon">
                 <Lottie
                   animationData={fortUsers}
-                  loop={true}
+                  loop={false}
                   autoPlay={true}
                   className="loadingTransferIcon"
                   preserveAspectRatio="xMidYMid meet"
@@ -297,7 +297,7 @@ const DashBoardTransfer = () => {
             <div className="receiveMoneyModalDiv_area1">
               <Lottie
                 animationData={cardIcon}
-                loop={true}
+                loop={false}
                 autoPlay={true}
                 className="receiveMoneyModalDiv_area1_img"
                 preserveAspectRatio="xMidYMid meet"
@@ -353,7 +353,7 @@ const DashBoardTransfer = () => {
             <div className="depositMoneyDiv_cont_1">
               <div className="depositMoneyDiv_cont_title_cont">
                 <div className="depositMoneyDiv_cont_title_cont_title">
-                  Send NGNC
+                  Send NGNT
                 </div>
                 <div className="depositMoneyDiv_cont_title_cont_para">
                   Send funds directly to a blockchain address
@@ -416,7 +416,7 @@ const DashBoardTransfer = () => {
                   </div>
                   <div className="availegc_bal_div">
                     <div className="availegc_bal_div_title">Available</div>
-                    <div className="availegc_bal_div_amount">100 CNGN</div>
+                    <div className="availegc_bal_div_amount">100 NGNT</div>
                   </div>
                 </div>
                 <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
@@ -434,13 +434,13 @@ const DashBoardTransfer = () => {
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Minimum single withdrawal amount: 1000 CNGN
+                      Minimum single withdrawal amount: 1000 NGNT
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
                     <InfoOutlinedIcon className="depositMoneyDiv_cont_body_tips_div_1_icon" />
                     <div className="depositMoneyDiv_cont_body_tips_div_1_txt">
-                      Maximum single withdrawal amount: 1,000,000 CNGN
+                      Maximum single withdrawal amount: 1,000,000 NGNT
                     </div>
                   </div>
                   <div className="depositMoneyDiv_cont_body_tips_div_1">
@@ -461,7 +461,7 @@ const DashBoardTransfer = () => {
                 className="depositMoneyDiv_cont_2_btn"
                 onClick={send_crypto}
               >
-                Withdraw CNGN
+                Withdraw NGNT
               </button>
             </div>
           </div>
@@ -479,7 +479,7 @@ const DashBoardTransfer = () => {
             <div className="depositMoneyDiv_cont_1">
               <div className="depositMoneyDiv_cont_title_cont">
                 <div className="depositMoneyDiv_cont_title_cont_title">
-                  Send CNGN
+                  Send NGNT
                 </div>
                 <div className="depositMoneyDiv_cont_title_cont_para">
                   Send funds directly to a cube user
@@ -497,10 +497,10 @@ const DashBoardTransfer = () => {
                         alt=""
                         className="depositMoneyDiv_cont_body_input_div_div_cont1_img"
                       />
-                      Cube Naira
+                      Naira Token
                     </div>
                     <div className="depositMoneyDiv_cont_body_input_div_div_cont2">
-                      CNGN
+                      NGNT
                     </div>
                   </div>
                 </div>
@@ -584,7 +584,7 @@ const DashBoardTransfer = () => {
                   </div>
                   <div className="availegc_bal_div">
                     <div className="availegc_bal_div_title">Available</div>
-                    <div className="availegc_bal_div_amount">90 CNGN</div>
+                    <div className="availegc_bal_div_amount">90 NGNT</div>
                   </div>
                 </div>
                 <div className="depositMoneyDiv_cont_body_wallet_addr_divb">
@@ -622,7 +622,7 @@ const DashBoardTransfer = () => {
                 className="depositMoneyDiv_cont_2_btn"
                 onClick={send_crypto_internal}
               >
-                Withdraw CNGN
+                Withdraw NGNT
               </button>
             </div>
           </div>
