@@ -136,7 +136,7 @@ const FundEgax = () => {
     if (payload.address === "" || payload.amount === "") {
       return;
     }
-    console.log(payload);
+    console.log(payload, "siii");
     const res = await ADD_TO_WATCHER(payload);
 
     console.log(res, "from heaven");
