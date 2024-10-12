@@ -63,7 +63,7 @@ const FundEgax = () => {
 
   const handleOnChange = (e) => {
     const { id, value } = e.target;
-    setPayload({ ...payload.address, [id]: value });
+    setPayload({ ...payload, [id]: value });
   };
   const ToggleBankTransferModal = () => {
     setOpenBankTransferModal(!openBankTransferModal);
@@ -138,9 +138,7 @@ const FundEgax = () => {
     }
     console.log(payload, "siii");
     const res = await ADD_TO_WATCHER(payload);
-
-    console.log(res, "from heaven");
-
+    console.log(res, "werey");
     ToggleBankDetails();
   };
   if (loadingDiv) {
