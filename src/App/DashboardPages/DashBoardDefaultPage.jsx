@@ -83,8 +83,8 @@ const DashBoardDefaultPage = () => {
     await userBalance();
   };
   useEffect(() => {
-    transactionFunc();
-    userBalFunc();
+    // transactionFunc();
+    // userBalFunc();
   }, []);
 
   const groups = transaction.reduce((groups, data) => {

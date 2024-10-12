@@ -11,7 +11,9 @@ import DashBoardTransactions from "./DashboardPages/DashBoardTransactions";
 import "./DashboardStyles/dashboard.css";
 import getUserInfo from "../helper/userhelper";
 import FundEgax from "./DashboardPages/FundEgax";
+import { useDispatch } from "react-redux";
 const DashboardHome = () => {
+  const dispatch = useDispatch();
   if (
     getUserInfo() === null ||
     getUserInfo() === undefined ||
@@ -28,6 +30,13 @@ const DashboardHome = () => {
       localStorage.removeItem("redirectUrl"); // Clear the stored URL after redirect
     }
   }
+
+  useEffect(() => {
+    dispatch({ type: "socket/connect" });
+    return () => {
+      dispatch({ type: "socket/disconnect" });
+    };
+  }, [dispatch]);
 
   return (
     <div className="dashboard">
