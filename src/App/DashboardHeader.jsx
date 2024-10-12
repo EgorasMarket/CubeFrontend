@@ -11,25 +11,6 @@ const DashboardHeader = () => {
       <div className="container">
         <div className="dashBoardHeaderDiv_area">
           <a href="/" className="header_div_area_1">
-            <div className="header_div_area_1_div1">
-              <img
-                src="/cube_logo_bg.svg"
-                alt=""
-                className="header_div_area_1_img"
-              />
-
-              <img
-                src="/cube.svg"
-                alt=""
-                className="header_div_area_1_img_anima"
-              />
-
-              {/* <img
-                    src="/cube_logo.svg"
-                    alt=""
-                    className="header_div_area_1_img"
-                  /> */}
-            </div>
             Cub<span className="header_div_area_1_span">e</span>
           </a>
           <div className="dashBoardHeaderDiv_area2">

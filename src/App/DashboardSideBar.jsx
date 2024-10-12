@@ -1,13 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import "./DashboardStyles/dashboardSidebar.css";
-import DashboardTwoToneIcon from "@mui/icons-material/DashboardTwoTone";
-import ImportExportTwoToneIcon from "@mui/icons-material/ImportExportTwoTone";
-import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
-import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
-import PowerSettingsNewTwoToneIcon from "@mui/icons-material/PowerSettingsNewTwoTone";
-import ReceiptLongTwoToneIcon from "@mui/icons-material/ReceiptLongTwoTone";
-import LightbulbTwoToneIcon from "@mui/icons-material/LightbulbTwoTone";
 import { DashboardSquare02Icon } from "hugeicons-react";
 import { MoneyAdd02Icon } from "hugeicons-react";
 import { SentIcon } from "hugeicons-react";
@@ -79,6 +72,23 @@ const DashboardSideBar = () => {
         />
 
         <div className="dashBoardSideBarDiv_sideBar_div_txt"> Add Money</div>
+      </Link>
+      <Link
+        to="/app/fund-egax"
+        className={
+          activeBg === "fund"
+            ? "dashBoardSideBarDiv_sideBar_div__active"
+            : "dashBoardSideBarDiv_sideBar_div"
+        }
+        id="add"
+        onClick={changeBg}
+      >
+        <MoneyAdd02Icon
+          size={25}
+          className="dashBoardSideBarDiv_sideBar_div_icon"
+        />
+
+        <div className="dashBoardSideBarDiv_sideBar_div_txt"> Fund Egax</div>
       </Link>
       <Link
         to="/app/send-money"

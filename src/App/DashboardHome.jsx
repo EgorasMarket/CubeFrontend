@@ -10,8 +10,8 @@ import DashBoardBills from "./DashboardPages/DashBoardBills";
 import DashBoardTransactions from "./DashboardPages/DashBoardTransactions";
 import "./DashboardStyles/dashboard.css";
 import getUserInfo from "../helper/userhelper";
+import FundEgax from "./DashboardPages/FundEgax";
 const DashboardHome = () => {
-  console.log(getUserInfo(), localStorage.getItem("x-token"));
   if (
     getUserInfo() === null ||
     getUserInfo() === undefined ||
@@ -33,6 +33,11 @@ const DashboardHome = () => {
               <Route path="/app/home" element={<DashBoardDefaultPage />} />
               <Route path="/app/add-money" element={<DashBoardAddMoney />} />
               <Route path="/app/send-money" element={<DashBoardTransfer />} />
+              <Route path="/app/fund-egax" element={<FundEgax />} />
+              <Route
+                path="/app/fund-egax/:wallet_address"
+                element={<FundEgax />}
+              />
               <Route
                 path="/app/all-transactions"
                 element={<DashBoardTransactions />}

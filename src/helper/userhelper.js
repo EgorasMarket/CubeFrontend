@@ -5,8 +5,6 @@ const getUserInfo = () => {
 
   const user = JSON.parse(localStorage.getItem("user-info"));
 
-  console.log(user);
-
   return user;
 };
 

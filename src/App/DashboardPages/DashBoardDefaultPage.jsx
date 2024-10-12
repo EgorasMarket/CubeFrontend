@@ -192,6 +192,14 @@ const DashBoardDefaultPage = () => {
               Transfer Money
             </div>
           </Link>
+          <Link to="/app/fund-egax" className="Transfer_withdraw_div_cont2">
+            <img
+              src="/img/send_icon.png"
+              alt=""
+              className="Transfer_withdraw_div_cont2_icon"
+            />
+            <div className="Transfer_withdraw_div_cont2_txt">Fund Egax</div>
+          </Link>
         </div>
         <div className="defaultPage_body_area2">
           <div className="defaultPage_body_area2_cont1">

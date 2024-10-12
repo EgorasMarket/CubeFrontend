@@ -13,3 +13,4 @@ export const VERIFY_BANK_ROUTE = `/api/withdrawal/verify/account`;
 export const PROCESS_FIAT_CASHOUT_ROUTE = `/api/withdrawal/cashout`;
 export const GENERATE_BANK_ACCOUNT_ROUTE = `/api/user/generate/virtual/account`;
 export const UPDATE_BVN_ROUTE = `/api/user/submit/bvn`;
+export const ADD_TO_WATCHER_ROUTE = `/egomart/add-to-watch`;
