@@ -17,7 +17,16 @@ const DashboardHome = () => {
     getUserInfo() === undefined ||
     localStorage.getItem("x-token") === null
   ) {
+    const currentUrl = window.location.href;
+    localStorage.setItem("redirectUrl", currentUrl);
     return (window.location.href = "/login");
+  } else {
+    const redirectUrl = localStorage.getItem("redirectUrl");
+    if (redirectUrl) {
+      // Redirect the user to the stored URL
+      window.location.href = redirectUrl;
+      localStorage.removeItem("redirectUrl"); // Clear the stored URL after redirect
+    }
   }
 
   return (

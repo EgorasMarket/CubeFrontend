@@ -1,5 +1,5 @@
-// export const BASE_SERVER = "http://localhost:4022";
-export const BASE_SERVER = "https://saltlake.usecube.io";
+export const BASE_SERVER = "http://localhost:4022";
+// export const BASE_SERVER = "https://saltlake.usecube.io";
 
 export const LOGIN_ROUTE = `/pub/user/login`;
 export const REGISTER_ROUTE = `/pub/user/register`;
