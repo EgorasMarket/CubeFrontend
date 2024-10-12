@@ -16,7 +16,7 @@
 }
 .header_div_area_1_div1 {
   width: 40px;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
   position: relative;
   margin-right: 10px;
   justify-content: center;
@@ -98,10 +98,11 @@
   width: 100%;
   color: #fff;
   background: #0000;
-  padding: 2em 0em;
+  padding: 1em 0;
   z-index: 10000;
   position: absolute;
   top: 0;
+  height: auto;
 }
 .header_partial_div {
   color: #ffffff;
